@@ -1,0 +1,3 @@
+PROJECT_NAME=scissum
+
+CXXFLAGS=-std=c++11 -I$(DOCUMENT_PATH)/src

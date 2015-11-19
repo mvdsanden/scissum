@@ -1,0 +1,230 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		C15A46EE1BFE24F900A756D2 /* Decompressor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Decompressor.cpp; path = src/tools/Decompressor.cpp; sourceTree = "<group>"; };
+		C15A46EF1BFE24F900A756D2 /* Decompressor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Decompressor.hpp; path = src/tools/Decompressor.hpp; sourceTree = "<group>"; };
+		C15A46F11BFE265400A756D2 /* DecompressorSource.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DecompressorSource.cpp; path = src/tools/DecompressorSource.cpp; sourceTree = "<group>"; };
+		C15A46F21BFE265400A756D2 /* DecompressorSource.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = DecompressorSource.hpp; path = src/tools/DecompressorSource.hpp; sourceTree = "<group>"; };
+		C15A46F41BFE366900A756D2 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = Makefile; sourceTree = "<group>"; usesTabs = 1; };
+		C15A46F51BFE36B400A756D2 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; name = Makefile; path = src/tools/Makefile; sourceTree = "<group>"; usesTabs = 1; };
+		C15A46F61BFE36F300A756D2 /* defaults.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = defaults.mk; path = src/defaults.mk; sourceTree = "<group>"; };
+		C15A46F81BFE3D0B00A756D2 /* test_decompressormemorysource.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test_decompressormemorysource.cpp; path = src/tests/test_decompressormemorysource.cpp; sourceTree = "<group>"; };
+		C15A46FA1BFE3D3800A756D2 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = src/tests/Makefile; sourceTree = "<group>"; usesTabs = 1; };
+		C15A46FB1BFE4FDE00A756D2 /* LzsDecompressor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LzsDecompressor.cpp; path = src/tools/LzsDecompressor.cpp; sourceTree = "<group>"; };
+		C15A46FC1BFE4FDE00A756D2 /* LzsDecompressor.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = LzsDecompressor.hpp; path = src/tools/LzsDecompressor.hpp; sourceTree = "<group>"; };
+		C15A46FD1BFE5DEB00A756D2 /* test_lzsdecompressor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test_lzsdecompressor.cpp; path = src/tests/test_lzsdecompressor.cpp; sourceTree = "<group>"; };
+		C15A46FE1BFE7E1C00A756D2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C15A46FF1BFE7E1C00A756D2 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		C15A46E31BFE247A00A756D2 = {
+			isa = PBXGroup;
+			children = (
+				C15A46FE1BFE7E1C00A756D2 /* README.md */,
+				C15A46FF1BFE7E1C00A756D2 /* LICENSE */,
+				C15A46F91BFE3D1400A756D2 /* tests */,
+				C15A46F61BFE36F300A756D2 /* defaults.mk */,
+				C15A46F41BFE366900A756D2 /* Makefile */,
+				C15A46F01BFE250000A756D2 /* tools */,
+			);
+			sourceTree = "<group>";
+		};
+		C15A46F01BFE250000A756D2 /* tools */ = {
+			isa = PBXGroup;
+			children = (
+				C15A46F51BFE36B400A756D2 /* Makefile */,
+				C15A46EE1BFE24F900A756D2 /* Decompressor.cpp */,
+				C15A46EF1BFE24F900A756D2 /* Decompressor.hpp */,
+				C15A46F11BFE265400A756D2 /* DecompressorSource.cpp */,
+				C15A46F21BFE265400A756D2 /* DecompressorSource.hpp */,
+				C15A46FB1BFE4FDE00A756D2 /* LzsDecompressor.cpp */,
+				C15A46FC1BFE4FDE00A756D2 /* LzsDecompressor.hpp */,
+			);
+			name = tools;
+			sourceTree = "<group>";
+		};
+		C15A46F91BFE3D1400A756D2 /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				C15A46FA1BFE3D3800A756D2 /* Makefile */,
+				C15A46F81BFE3D0B00A756D2 /* test_decompressormemorysource.cpp */,
+				C15A46FD1BFE5DEB00A756D2 /* test_lzsdecompressor.cpp */,
+			);
+			name = tests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		C15A46E81BFE247A00A756D2 /* Scissum */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = C15A46EB1BFE247A00A756D2 /* Build configuration list for PBXLegacyTarget "Scissum" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			dependencies = (
+			);
+			name = Scissum;
+			passBuildSettingsInEnvironment = 1;
+			productName = Scissum;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXProject section */
+		C15A46E41BFE247A00A756D2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = MVDS;
+				TargetAttributes = {
+					C15A46E81BFE247A00A756D2 = {
+						CreatedOnToolsVersion = 7.1;
+					};
+				};
+			};
+			buildConfigurationList = C15A46E71BFE247A00A756D2 /* Build configuration list for PBXProject "Scissum" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C15A46E31BFE247A00A756D2;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C15A46E81BFE247A00A756D2 /* Scissum */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		C15A46E91BFE247A00A756D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Debug;
+		};
+		C15A46EA1BFE247A00A756D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+			};
+			name = Release;
+		};
+		C15A46EC1BFE247A00A756D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "-Isrc/";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C15A46ED1BFE247A00A756D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				OTHER_CFLAGS = "-Isrc/";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C15A46E71BFE247A00A756D2 /* Build configuration list for PBXProject "Scissum" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C15A46E91BFE247A00A756D2 /* Debug */,
+				C15A46EA1BFE247A00A756D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C15A46EB1BFE247A00A756D2 /* Build configuration list for PBXLegacyTarget "Scissum" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C15A46EC1BFE247A00A756D2 /* Debug */,
+				C15A46ED1BFE247A00A756D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C15A46E41BFE247A00A756D2 /* Project object */;
+}
