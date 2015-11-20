@@ -21,12 +21,22 @@
 		C15A46FD1BFE5DEB00A756D2 /* test_lzsdecompressor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test_lzsdecompressor.cpp; path = src/tests/test_lzsdecompressor.cpp; sourceTree = "<group>"; };
 		C15A46FE1BFE7E1C00A756D2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C15A46FF1BFE7E1C00A756D2 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		C15A47011BFE85DB00A756D2 /* Sci32ResourceFileScanner.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Sci32ResourceFileScanner.cpp; path = src/sci/Sci32ResourceFileScanner.cpp; sourceTree = "<group>"; };
+		C15A47021BFE85DB00A756D2 /* Sci32ResourceFileScanner.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Sci32ResourceFileScanner.hpp; path = src/sci/Sci32ResourceFileScanner.hpp; sourceTree = "<group>"; };
+		C15A47031BFE87D100A756D2 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = src/sci/Makefile; sourceTree = "<group>"; usesTabs = 1; };
+		C15A47041BFE88A100A756D2 /* ResourceScanner.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ResourceScanner.cpp; path = src/ResourceScanner.cpp; sourceTree = "<group>"; };
+		C15A47051BFE8F6D00A756D2 /* ResourceExtractor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ResourceExtractor.cpp; path = src/ResourceExtractor.cpp; sourceTree = "<group>"; };
+		C15A47071BFEBE5900A756D2 /* picture.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = picture.txt; path = docs/picture.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		C15A46E31BFE247A00A756D2 = {
 			isa = PBXGroup;
 			children = (
+				C15A47061BFEBE3400A756D2 /* docs */,
+				C15A47051BFE8F6D00A756D2 /* ResourceExtractor.cpp */,
+				C15A47041BFE88A100A756D2 /* ResourceScanner.cpp */,
+				C15A47001BFE84CF00A756D2 /* sci */,
 				C15A46FE1BFE7E1C00A756D2 /* README.md */,
 				C15A46FF1BFE7E1C00A756D2 /* LICENSE */,
 				C15A46F91BFE3D1400A756D2 /* tests */,
@@ -58,6 +68,24 @@
 				C15A46FD1BFE5DEB00A756D2 /* test_lzsdecompressor.cpp */,
 			);
 			name = tests;
+			sourceTree = "<group>";
+		};
+		C15A47001BFE84CF00A756D2 /* sci */ = {
+			isa = PBXGroup;
+			children = (
+				C15A47011BFE85DB00A756D2 /* Sci32ResourceFileScanner.cpp */,
+				C15A47021BFE85DB00A756D2 /* Sci32ResourceFileScanner.hpp */,
+				C15A47031BFE87D100A756D2 /* Makefile */,
+			);
+			name = sci;
+			sourceTree = "<group>";
+		};
+		C15A47061BFEBE3400A756D2 /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				C15A47071BFEBE5900A756D2 /* picture.txt */,
+			);
+			name = docs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

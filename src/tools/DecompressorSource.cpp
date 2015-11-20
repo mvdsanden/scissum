@@ -92,6 +92,6 @@ bool DecompressorMemorySource::fillWord()
         --d_length;
     }
     
-    std::cout << "Word=0x" << std::hex << std::setw(16) << std::setfill('0') << d_word << std::dec << ".\n";
+    //std::cout << "Word=0x" << std::hex << std::setw(16) << std::setfill('0') << d_word << std::dec << ".\n";
     return true;
 }

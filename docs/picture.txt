@@ -1,0 +1,72 @@
+# Picture Resource
+
+// Header
+// [headerSize:WORD] [celCount:BYTE] [Unknown:BYTE] [Unknown:WORD] [paletteOffset:DWORD] [Unknown:DWORD]
+// cel-header follow afterwards, each is 42 bytes
+// Cel-Header
+// [width:WORD] [height:WORD] [displaceX:WORD] [displaceY:WORD] [clearColor:BYTE] [compressed:BYTE]
+//  offset 10-23 is unknown
+// [rleOffset:DWORD] [literalOffset:DWORD] [Unknown:WORD] [Unknown:WORD] [priority:WORD] [relativeXpos:WORD] [relativeYpos:WORD]
+
+
+* File Header (14 bytes)
+0x0000      UInt16      Header Size
+0x0002      UInt8       Cel Count       (16 bit?)
+0x0003      UInt8       Unknown
+0x0004      UInt16      Unknown         (Size of Cel Header?)
+0x0006      UInt32      Palette Offset
+0x000a      UInt16      Width
+0x000c      UInt16      Height
+
+The color palette for the file can be found at the absolute offset of
+Palette Offset.
+
+** Palette
+A palette seems to start with a header. The following offsets are relative to
+the start of the palette data (Palette Offset).
+
+0x0019      UInt8       Starting Color
+0x001d      UInt16      Color Count.
+0x0020      UInt8       Palette Format  (0=4 bytes per entry, 1=3 bytes per entry)
+
+The actual palette data seems to start at relative offset 0x0025. Depending on
+the Palette Format the entries are 3 or 4 bytes long. In the four byte version
+the first byte of every entry is unused. After that the entries are R, G and B.
+
+*** Three Byte Palette Entry
+0x0000      UInt8       Red
+0x0001      UInt8       Green
+0x0002      UInt8       Blue
+
+*** Four Byte Palette Entry
+0x0000      UInt8       Unused
+0x0001      UInt8       Red
+0x0002      UInt8       Green
+0x0003      UInt8       Blue
+
+
+The file header is followed by the cel headers. I assume all (Cel Count) cel
+headers will follow each other.
+
+* Cel Header (42 bytes)
+0x0000      UInt16      Width
+0x0002      UInt16      Height
+0x0004      UInt16      Horizontal Displacement
+0x0006      UInt16      Vertical Displacement
+0x0008      UInt8       Clear Color
+0x0009      UInt8       Compressed
+0x000a - 0x0017         Unknown
+0x0018      UInt32      RLE Offset                  Pixels are found here.
+0x001c      UInt32      Literal Offset
+0x0020      UInt16      Unknown
+0x0022      UInt16      Unknown
+0x0024      UInt16      Priority
+0x0026      UInt16      Relative X-Position
+0x0028      UInt16      Relative Y-Position
+
+The actual pixel data is found the offset specified by the RLE Offset, relative
+to the begining of the picture data (start of file header).
+
+(Right befor the pixel data is a UInt32 with the actuall number of bytes of pixel data)
+
+In case of uncompressed data this is Width*Height bytes of pixel data.
