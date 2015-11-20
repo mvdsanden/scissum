@@ -27,6 +27,8 @@
 		C15A47041BFE88A100A756D2 /* ResourceScanner.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ResourceScanner.cpp; path = src/ResourceScanner.cpp; sourceTree = "<group>"; };
 		C15A47051BFE8F6D00A756D2 /* ResourceExtractor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ResourceExtractor.cpp; path = src/ResourceExtractor.cpp; sourceTree = "<group>"; };
 		C15A47071BFEBE5900A756D2 /* picture.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = picture.txt; path = docs/picture.txt; sourceTree = "<group>"; };
+		C15A47081BFECFF600A756D2 /* resource.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = resource.txt; path = docs/resource.txt; sourceTree = "<group>"; };
+		C15A47091BFED22A00A756D2 /* references.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = references.txt; path = docs/references.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -84,6 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				C15A47071BFEBE5900A756D2 /* picture.txt */,
+				C15A47081BFECFF600A756D2 /* resource.txt */,
+				C15A47091BFED22A00A756D2 /* references.txt */,
 			);
 			name = docs;
 			sourceTree = "<group>";

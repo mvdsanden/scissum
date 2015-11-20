@@ -1,0 +1,49 @@
+# Resource file format
+
+The resource file contains resource entries all of which start with a Resource
+Entry Header and are followed by the associated data.
+
+Most resource entry data is compressed with the LZS (STAC) data compression
+algorithm. It seems that the Compression Method can be ignore. When the data
+is compressed it is always compressed using LZS. If it is compressed can be
+checked by comparing Compressed Size with Uncompressed Size. When they
+are the same the data is uncompressed.
+
+* Resource Entry Header
+0x0000  UInt8   Type;
+0x0001  UInt16  Id;
+0x0003  UInt32  Compressed Size;
+0x0007  UInt32  Uncompressed Size;
+0x000b  UInt16  Compression Method;
+
+** Resource Types
+
+The following resource types are known.
+
+0  VIEW
+1  PICTURE
+2  SCRIPT
+3  TEXT
+4  SOUND
+5  ETC
+6  VOCAB
+7  FONT
+8  CURSOR
+9  PATCH
+10 BITMAP
+11 PALETTE
+12 AUDIO1
+13 AUDIO2
+14 SYNC
+15 MESSAGE
+16 MAP
+18 CHUNK
+19 AUDIO36
+20 SYNC36
+21 TRANSLATION
+22 ROBOT
+23 VMD
+24 DUCK
+25 CLUT
+26 TARGA
+27 ZZZ

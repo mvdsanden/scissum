@@ -20,7 +20,7 @@ namespace scissum {
         
         enum Types {
             TYPE_VIEW = 0,
-            TYPE_PIC = 1,
+            TYPE_PICTURE = 1,
             TYPE_SCRIPT = 2,
             TYPE_TEXT = 3,
             TYPE_SOUND = 4,

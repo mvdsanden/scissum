@@ -1,0 +1,8 @@
+# References
+
+Most information I gathered from the following places.
+
+- ScummVM source code.
+- wiki.scummvm.org
+- https://web.archive.org/web/20070608065707/http://freesci.linuxgames.com/scihtml/x971.html
+- Sources from: http://sci.sierrahelp.com/Tools/SCITools.html (Most notably SCI Resources Dumper 1.2).
