@@ -6,3 +6,7 @@ Most information I gathered from the following places.
 - wiki.scummvm.org
 - https://web.archive.org/web/20070608065707/http://freesci.linuxgames.com/scihtml/x971.html
 - Sources from: http://sci.sierrahelp.com/Tools/SCITools.html (Most notably SCI Resources Dumper 1.2).
+
+The LZS (STACT) compression information I found at the following locations.
+- ANSI X3.241-1994: http://masters.donntu.org/2003/fvti/boykov/library/lzs.pdf
+- RFC1967: PPP LZS-DCP Compression Protocol (LZS-DCP)(https://tools.ietf.org/html/rfc1967#section-2.5.7)
