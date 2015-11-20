@@ -1,13 +1,5 @@
 # Picture Resource
 
-// Header
-// [headerSize:WORD] [celCount:BYTE] [Unknown:BYTE] [Unknown:WORD] [paletteOffset:DWORD] [Unknown:DWORD]
-// cel-header follow afterwards, each is 42 bytes
-// Cel-Header
-// [width:WORD] [height:WORD] [displaceX:WORD] [displaceY:WORD] [clearColor:BYTE] [compressed:BYTE]
-//  offset 10-23 is unknown
-// [rleOffset:DWORD] [literalOffset:DWORD] [Unknown:WORD] [Unknown:WORD] [priority:WORD] [relativeXpos:WORD] [relativeYpos:WORD]
-
 
 * File Header (14 bytes)
 0x0000      UInt16      Header Size
