@@ -1,16 +1,25 @@
 DOCUMENT_PATH=$(shell pwd)
 export DOCUMENT_PATH
 
-LDFLAGS=$(DOCUMENT_PATH)/src/tools/scissum_tools.a $(DOCUMENT_PATH)/src/sci/scissum_sci.a
-CXXFLAGS=-std=c++11
+include src/defaults.mk
 
-all: tools sci ResourceScanner ResourceExtractor
+LDFLAGS=\
+$(DOCUMENT_PATH)/src/tools/scissum_tools.a\
+$(DOCUMENT_PATH)/src/sci/scissum_sci.a\
+$(DOCUMENT_PATH)/src/graphics/scissum_graphics.a
+
+#CXXFLAGS=-std=c++11
+
+all: tools sci graphics ResourceScanner ResourceExtractor
 
 tools:
 	$(MAKE) -C src/tools
 
 sci:
 	$(MAKE) -C src/sci
+
+graphics:
+	$(MAKE) -C src/graphics
 
 ResourceScanner: src/ResourceScanner.cpp sci
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o ResourceScanner src/ResourceScanner.cpp

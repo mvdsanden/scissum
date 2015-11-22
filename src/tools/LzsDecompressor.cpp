@@ -54,6 +54,29 @@ size_t LzsDecompressor::read(uint8_t *buffer, size_t length)
     return total;
 }
 
+size_t LzsDecompressor::skip(size_t length)
+{
+    if (d_endOfData) {
+        return 0;
+    }
+    
+    size_t total = length;
+    while (length != 0) {
+        if (d_historyMatchLength != 0) {
+            size_t count = skipFromHistory(length);
+            length -= count;
+        } else {
+            uint8_t tmp = 0;
+            if (!decompressByte(tmp)) {
+                return total - length;
+            }
+            
+            --length;
+        }
+    }
+    return total;
+}
+
 bool LzsDecompressor::decompressByte(uint8_t &dest)
 {
     if (d_source->getBit()) {
@@ -132,8 +155,24 @@ void LzsDecompressor::pushHistory(uint8_t value)
     d_historyPos %= 2048;
 }
 
+size_t LzsDecompressor::skipFromHistory(size_t length)
+{
+    // TODO: optimize!
+    size_t count = 0;
+    while (d_historyMatchLength > 0 && length > 0) {
+        pushHistory(d_history[d_historyMatchPos++]);
+        
+        d_historyMatchPos %= d_historyFill;
+        --d_historyMatchLength;
+        --length;
+        ++count;
+    }
+    return count;
+}
+
 size_t LzsDecompressor::copyFromHistory(uint8_t *buffer, size_t length)
 {
+    // TODO: optimize!
     size_t count = 0;
     while (d_historyMatchLength > 0 && length > 0) {
         *(buffer++) = d_history[d_historyMatchPos];

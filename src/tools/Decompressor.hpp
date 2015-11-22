@@ -11,13 +11,16 @@
 
 #include <memory>
 
+#include "io/Reader.hpp"
+
 namespace scissum {
     
     class Decompressor
+    : public Reader
     {
     public:
         
-        virtual size_t read(uint8_t *buffer, size_t length) = 0;
+//        virtual size_t read(uint8_t *buffer, size_t length) = 0;
         
     };
     

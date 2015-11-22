@@ -6,55 +6,68 @@
 //  Copyright © 2015 MVDS. All rights reserved.
 //
 
-#include "sci/Sci32ResourceFileScanner.hpp"
-#include "tools/LzsDecompressor.hpp"
-#include "tools/DecompressorSource.hpp"
+#include "sci/ResourceManager.hpp"
+#include "sci/Sci32Picture.hpp"
+#include "sci/Sci32PictureCel.hpp"
+#include "sci/Sci32PictureLoader.hpp"
+#include "io/Reader.hpp"
+#include "graphics/ImageSaver.hpp"
 
 #include <iostream>
+#include <sstream>
 #include <iomanip>
-#include <fstream>
 #include <memory>
 
-void extract(std::istream &stream, size_t type, size_t id)
+const bool g_savePictures = true;
+
+void loadPicture(std::shared_ptr<scissum::Reader> const &reader)
 {
-    scissum::Sci32ResourceFileScanner scanner(stream);
+    scissum::Sci32PictureLoader loader;
+    auto picture = loader.loadPicture(reader);
+
+    auto &saver = scissum::ImageSaver::getPnmSaver();
     
-    while (scanner.next()) {
+    size_t index = 0;
+    for (auto &i : picture->cels()) {
+        std::cout << "Saving cel " << index
+        << " (prio=" << i->priority()
+        << " " << i->width() << "x" << i->height()
+        << " +" << i->relativeXPos() << "x" << i->relativeYPos() << ").\n";
         
-        if (scanner.resourceType() == type && scanner.resourceId() == id) {
+        std::stringstream s; s << "pixture_" << (index++) << ".pnm";
+        saver.saveImage(i->image(), s.str());
+    }
+}
 
-            stream.seekg(scanner.resourceOffset(), std::ios::beg);
-            
-            uint8_t *compressedData = new uint8_t [ scanner.resourceCompressedSize() ];
-            
-            stream.read(reinterpret_cast<char *>(compressedData), scanner.resourceCompressedSize());
-            
-            std::unique_ptr<scissum::DecompressorSource> source(new scissum::DecompressorMemorySource(compressedData,
-                                                                                                      scanner.resourceCompressedSize()));
-            scissum::LzsDecompressor decompressor(std::move(source));
-            
-            uint8_t readBuffer[2048];
-            
-            while (true) {
-                size_t len = decompressor.read(readBuffer, 2048);
-                if (len == 0) break;
-                std::cout.write(reinterpret_cast<char*>(readBuffer), len);
-            }
-            
-            break;
-        }
+void copyToStream(std::shared_ptr<scissum::Reader> const &reader, std::ostream &stream)
+{
+    uint8_t readBuffer[2048];
+    
+    while (true) {
+        size_t len = reader->read(readBuffer, 2048);
+        if (len == 0) break;
+        stream.write(reinterpret_cast<char*>(readBuffer), len);
+    }
+}
 
+void extract(size_t type, size_t id)
+{
+    auto resourceReader = scissum::ResourceManager::instance().openResource(type, id);
+    
+    if (type == 1 && g_savePictures) {
+        loadPicture(resourceReader);
+    } else {
+        copyToStream(resourceReader, std::cout);
     }
 }
 
 int main(int argc, char *argv[])
 {
-    
     if (argc < 4) {
         std::cerr << argv[0] << " <filename> <resourceType> <resourceId>\n";
     } else {
-        std::ifstream stream(argv[1]);
-        extract(stream, std::atoi(argv[2]), std::atoi(argv[3]));
+        scissum::ResourceManager::instance().loadResourceFile(argv[1]);
+        extract(std::atoi(argv[2]), std::atoi(argv[3]));
     }
     
     return 0;

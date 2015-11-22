@@ -8,11 +8,18 @@
 
 #include "Sci32ResourceFileScanner.hpp"
 
+#include <stdexcept>
+
+#include <cstring>
+
+#include <cstddef>
+#include <cerrno>
+
 using namespace scissum;
 
 
-Sci32ResourceFileScanner::Sci32ResourceFileScanner(std::istream &stream)
-: d_stream(stream), d_resourceOffset(0)
+Sci32ResourceFileScanner::Sci32ResourceFileScanner(int fileDescriptor)
+: d_fd(fileDescriptor), d_resourceOffset(0)
 {
     memset(&d_entryHeader, 0, sizeof(d_entryHeader));
 }
@@ -24,19 +31,35 @@ Sci32ResourceFileScanner::~Sci32ResourceFileScanner()
 
 bool Sci32ResourceFileScanner::next()
 {
-    if (!d_stream) {
-        return false;
-    }
+//    if (!d_stream) {
+//        return false;
+//    }
+    
+    d_resourceOffset += d_entryHeader.resourceCompressedSize;
     
     memset(&d_entryHeader, 0, sizeof(d_entryHeader));
     
-    d_stream.read(reinterpret_cast<char *>(&d_entryHeader), sizeof(d_entryHeader));
+    while (true) {
+        int res = pread(d_fd, &d_entryHeader, sizeof(d_entryHeader), d_resourceOffset);
+        if (res == -1) {
+            if (res == EAGAIN || res == EINTR) {
+                continue;
+            }
+            throw std::runtime_error("error reading from file");
+        } else if (res == 0) {
+            return false;
+        }
+        d_resourceOffset += res;
+        break;
+    }
     
-    d_resourceOffset = d_stream.tellg();
+//    d_stream.read(reinterpret_cast<char *>(&d_entryHeader), sizeof(d_entryHeader));
     
-    d_stream.seekg(d_entryHeader.resourceCompressedSize, std::ios::cur);
+//    d_resourceOffset = d_stream.tellg();
     
-    return !!d_stream;
+//    d_stream.seekg(d_entryHeader.resourceCompressedSize, std::ios::cur);
+    
+    return true;//!!d_stream;
 }
 
 size_t Sci32ResourceFileScanner::resourceOffset() const

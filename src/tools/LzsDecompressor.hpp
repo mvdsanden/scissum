@@ -28,6 +28,8 @@ namespace scissum {
         
         virtual size_t read(uint8_t *buffer, size_t length);
         
+        virtual size_t skip(size_t length);
+        
     private:
         
         bool decompressByte(uint8_t &dest);
@@ -37,6 +39,8 @@ namespace scissum {
         size_t parseLength();
         
         void pushHistory(uint8_t value);
+
+        size_t skipFromHistory(size_t length);
         
         size_t copyFromHistory(uint8_t *buffer, size_t length);
         

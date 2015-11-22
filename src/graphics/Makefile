@@ -1,14 +1,13 @@
 include ../defaults.mk
 
-NAME=sci
+NAME=graphics
 LIBRARY_NAME=$(PROJECT_NAME)_$(NAME)
 
 CLASSES=\
-Sci32ResourceFileScanner\
-Sci32Picture\
-Sci32PictureCel\
-Sci32PictureLoader\
-ResourceManager
+Palette\
+PixelBuffer\
+Image\
+ImageSaver
 
 OBJECTS=$(addsuffix .o,$(CLASSES))
 SOURCES=$(addsuffix .cpp,$(CLASSES))

@@ -25,14 +25,14 @@ namespace scissum {
         
     };
     
-    class DecompressorMemorySource
+    class DecompressorSourceBasic
     : public DecompressorSource
     {
     public:
         
-        DecompressorMemorySource(uint8_t const *buffer, size_t length);
-        
-        ~DecompressorMemorySource();
+        DecompressorSourceBasic();
+
+        ~DecompressorSourceBasic();
         
         virtual bool getBit();
         
@@ -40,17 +40,62 @@ namespace scissum {
         
         virtual size_t getVariableBits(size_t bits);
         
+    protected:
+        
+        virtual bool fillWord() = 0;
+
+        size_t d_word;
+        
+        size_t d_wordFill;
+        
+    };
+
+    class DecompressorMemorySource
+    : public DecompressorSourceBasic
+    {
+    public:
+        
+        DecompressorMemorySource(uint8_t const *buffer, size_t length);
+        
+        ~DecompressorMemorySource();
+        
+    protected:
+        
+        virtual bool fillWord();
+        
     private:
         
-        bool fillWord();
-
         uint8_t const *d_buffer;
         
         size_t d_length;
         
-        size_t d_word;
+    };
+
+    
+    class DecompressorFileSource
+    : public DecompressorSourceBasic
+    {
+    public:
         
-        size_t d_wordFill;
+        DecompressorFileSource(int fileDescriptor,
+                               size_t offset = 0,
+                               size_t length = 0);
+        
+        ~DecompressorFileSource();
+        
+    protected:
+        
+        virtual bool fillWord();
+        
+    private:
+
+        int d_fd;
+        
+        bool d_pipe;
+        
+        size_t d_offset;
+        
+        size_t d_length;
         
     };
     

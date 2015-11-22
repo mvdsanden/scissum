@@ -97,6 +97,49 @@ void test2()
     std::cerr << "test2: SUCESS.\n";
 }
 
+void test3()
+{
+    uint8_t compressedData[4] = {0x00, 0xE0, 0x6c, 0x00};
+    
+    std::unique_ptr<DecompressorSource> source(new DecompressorMemorySource(compressedData, 4));
+    LzsDecompressor d(std::move(source));
+    
+    uint8_t buffer[16];
+    
+    try {
+        
+        
+        size_t len = d.skip(2);
+        
+        std::cout << "Skipped " << len << " bytes.\n";
+        
+        if (len != 2) {
+            std::cerr << "test3: FAILED (skipped incorrect number of bytes)\n";
+            exit(1);
+        }
+        
+        len = d.read(buffer, 16);
+        
+        std::cout << "Read " << len << " bytes.\n";
+        
+        if (len != 3) {
+            std::cerr << "test3: FAILED (output length incorrect).\n";
+            exit(1);
+        }
+        
+        if (buffer[0] != 1 || buffer[1] != 1 || buffer[2] != 1) {
+            std::cerr << "test3: FAILED (output incorrect).\n";
+            exit(1);
+        }
+        
+    } catch (std::runtime_error &e) {
+        std::cerr << "test3: FAILED (" << e.what() << ").\n";
+        exit(1);
+    }
+    
+    std::cerr << "test3: SUCESS.\n";
+}
+
 void testInputOutput(uint8_t const *compressedData, size_t compressedLength,
                      uint8_t const *testData, size_t testLength)
 {
@@ -149,6 +192,7 @@ int main()
     test0();
     test1();
     test2();
+    test3();
     
     uint8_t input0[] = {0x00, 0xe0, 0x6c, 0x00};
     uint8_t output0[] = {0x01, 0x01, 0x01, 0x01, 0x01};

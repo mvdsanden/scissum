@@ -13,9 +13,11 @@
 #include <fstream>
 #include <memory>
 
-void scan(std::istream &stream)
+#include <fcntl.h>
+
+void scan(int fd)
 {
-    scissum::Sci32ResourceFileScanner scanner(stream);
+    scissum::Sci32ResourceFileScanner scanner(fd);
     
     while (scanner.next()) {
         std::cout
@@ -31,12 +33,17 @@ void scan(std::istream &stream)
 
 int main(int argc, char *argv[])
 {
+    int fd = -1;
+    
     if (argc < 2) {
-        scan(std::cin);
+        fd = STDIN_FILENO;
     } else {
-        std::ifstream stream(argv[1]);
-        scan(stream);
+        fd = open(argv[1], O_RDONLY);
     }
+
+    scan(fd);
+
+    close(fd);
     
     return 0;
 }

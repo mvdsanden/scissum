@@ -1,11 +1,13 @@
 # Picture Resource
 
 
+
+
 * File Header (14 bytes)
 0x0000      UInt16      Header Size
 0x0002      UInt8       Cel Count       (16 bit?)
 0x0003      UInt8       Unknown
-0x0004      UInt16      Unknown         (Size of Cel Header?)
+0x0004      UInt16      Unknown         (Farly certain this is the size of the Cel Header)
 0x0006      UInt32      Palette Offset
 0x000a      UInt16      Width
 0x000c      UInt16      Height
@@ -59,6 +61,6 @@ headers will follow each other.
 The actual pixel data is found the offset specified by the RLE Offset, relative
 to the begining of the picture data (start of file header).
 
-(Right befor the pixel data is a UInt32 with the actuall number of bytes of pixel data)
+(Right before the pixel data is a UInt32 with the actual number of bytes of pixel data)
 
 In case of uncompressed data this is Width*Height bytes of pixel data.

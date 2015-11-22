@@ -15,18 +15,16 @@
 
 using namespace scissum;
 
-DecompressorMemorySource::DecompressorMemorySource(uint8_t const *buffer, size_t length)
-: d_buffer(buffer), d_length(length), d_word(0), d_wordFill(0)
+DecompressorSourceBasic::DecompressorSourceBasic()
+: d_word(0), d_wordFill(0)
 {
-    
 }
 
-DecompressorMemorySource::~DecompressorMemorySource()
+DecompressorSourceBasic::~DecompressorSourceBasic()
 {
-    
 }
 
-bool DecompressorMemorySource::getBit()
+bool DecompressorSourceBasic::getBit()
 {
     if (d_wordFill < 1) {
         if (!fillWord()) {
@@ -41,7 +39,7 @@ bool DecompressorMemorySource::getBit()
     return result;
 }
 
-uint8_t DecompressorMemorySource::getByte()
+uint8_t DecompressorSourceBasic::getByte()
 {
     if (d_wordFill < 8) {
         if (!fillWord()) {
@@ -58,7 +56,7 @@ uint8_t DecompressorMemorySource::getByte()
     return result;
 }
 
-size_t DecompressorMemorySource::getVariableBits(size_t bits)
+size_t DecompressorSourceBasic::getVariableBits(size_t bits)
 {
     assert(bits < sizeof(d_word) * 8 - 8 && "maximum variable bits extraction reached");
     
@@ -75,6 +73,18 @@ size_t DecompressorMemorySource::getVariableBits(size_t bits)
     d_wordFill -= bits;
     
     return result;
+}
+
+
+DecompressorMemorySource::DecompressorMemorySource(uint8_t const *buffer, size_t length)
+: d_buffer(buffer), d_length(length)
+{
+    
+}
+
+DecompressorMemorySource::~DecompressorMemorySource()
+{
+    
 }
 
 bool DecompressorMemorySource::fillWord()
@@ -94,4 +104,71 @@ bool DecompressorMemorySource::fillWord()
     
     //std::cout << "Word=0x" << std::hex << std::setw(16) << std::setfill('0') << d_word << std::dec << ".\n";
     return true;
+}
+
+
+
+DecompressorFileSource::DecompressorFileSource(int fileDescriptor,
+                                               size_t offset,
+                                               size_t length)
+: d_fd(fileDescriptor), d_pipe(false), d_offset(offset), d_length(length)
+{
+    if (lseek(d_fd, 0, SEEK_CUR) == -1) {
+        if (errno == ESPIPE ) {
+            d_pipe = true;
+            
+            if (offset != 0) {
+                throw std::runtime_error("file descriptor not seekable");
+            }
+        } else {
+            throw std::runtime_error("invalid file descriptor");
+        }
+    }
+}
+
+DecompressorFileSource::~DecompressorFileSource()
+{
+}
+
+bool DecompressorFileSource::fillWord()
+{
+    if (d_length == 0) {
+        return false;
+    }
+    
+    bool result = false;
+    
+    const size_t wordSize = sizeof(d_word) * 8;
+    
+    while ((wordSize - d_wordFill > 8) && (d_length > 0)) {
+        
+        uint8_t b = 0;
+        
+        while (true) {
+            int res = 0;
+            if (d_pipe) {
+                res = read(d_fd, &b, 1);
+            } else {
+                res = pread(d_fd, &b, 1, d_offset);
+            }
+            if (res == -1) {
+                if (errno == EAGAIN || errno == EINTR) {
+                    continue;
+                }
+                return result;
+            } else if (res == 0) {
+                return result;
+            }
+            break;
+        }
+        
+        d_word |= static_cast<size_t>(b) << (wordSize - d_wordFill - 8);
+        d_wordFill += 8;
+        
+        ++d_offset;
+        --d_length;
+        result = true;
+    }
+    
+    return result;
 }

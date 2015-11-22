@@ -9,7 +9,7 @@
 #ifndef Sci32ResourceFileScanner_hpp
 #define Sci32ResourceFileScanner_hpp
 
-#include <istream>
+#include <cstdint>
 
 namespace scissum {
     
@@ -72,7 +72,7 @@ namespace scissum {
         };
         
         
-        Sci32ResourceFileScanner(std::istream &stream);
+        Sci32ResourceFileScanner(int fileDescriptor);
         
         ~Sci32ResourceFileScanner();
         
@@ -100,7 +100,7 @@ namespace scissum {
             uint16_t resourceCompressionMethod;
         } __attribute__ ((packed));
         
-        std::istream &d_stream;
+        int d_fd;
         
         size_t d_resourceOffset;
         
