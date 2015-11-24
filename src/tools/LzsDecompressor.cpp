@@ -20,7 +20,14 @@
 using namespace scissum;
 
 LzsDecompressor::LzsDecompressor(std::unique_ptr<DecompressorSource> &&source)
-: d_source(std::move(source)), d_historyPos(0), d_historyFill(0), d_historyMatchPos(0), d_historyMatchLength(0), d_endOfData(false)
+:
+d_source(std::move(source)),
+d_historyPos(0),
+d_historyFill(0),
+d_historyMatchPos(0),
+d_historyMatchLength(0),
+d_endOfData(false),
+d_offset(0)
 {
     
 }
@@ -44,6 +51,7 @@ size_t LzsDecompressor::read(uint8_t *buffer, size_t length)
             length -= count;
         } else {
             if (!decompressByte(*buffer)) {
+                d_offset += (total - length);
                 return total - length;
             }
             
@@ -51,6 +59,9 @@ size_t LzsDecompressor::read(uint8_t *buffer, size_t length)
             --length;
         }
     }
+    
+    d_offset += total;
+    
     return total;
 }
 
@@ -68,13 +79,22 @@ size_t LzsDecompressor::skip(size_t length)
         } else {
             uint8_t tmp = 0;
             if (!decompressByte(tmp)) {
+                d_offset += (total - length);
                 return total - length;
             }
             
             --length;
         }
     }
+    
+    d_offset += total;
+    
     return total;
+}
+
+size_t LzsDecompressor::readOffset() const
+{
+    return d_offset;
 }
 
 bool LzsDecompressor::decompressByte(uint8_t &dest)
@@ -167,6 +187,7 @@ size_t LzsDecompressor::skipFromHistory(size_t length)
         --length;
         ++count;
     }
+    
     return count;
 }
 

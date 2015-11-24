@@ -1,0 +1,92 @@
+# View resource
+
+* Resource header (20 bytes)
+0x0000      UInt16      Header size (excluding this field, it seems)
+0x0002      UInt8       Loop Count
+0x0003      UInt8       Flags
+0x0004      UInt16      Version??
+0x0006      UInt16      Unknown
+0x0008      UInt32      Palette Offset
+0x000c      UInt8       Loop Size
+0x000d      UInt8       Cel Size
+0x000e      UInt16      Width
+0x0010      UInt16      Height
+0x0012      UInt16      Unknown
+
+Loop headers follow the resource header.
+
+** Loop Header (16 bytes)
+0x0000      UInt16      Seek Entry      ??
+0x0002      UInt8       Cel Count
+0x0003      UInt32      Unknown (seen 2x: 0xffffffff)
+0x0004      UInt8       Unknown (seen 2x: 3)
+0x0005      UInt32      Unknown (seen 2x: 0x00000000)
+0x000c      UInt32      Cel Data Offset
+
+Cel Count cel headers can be found at Cel Data Offset.
+
+** Cel Header (52 bytes)
+0x0000      UInt16      Width
+0x0002      UInt16      Height
+0x0004      Int16       Horizontal Displacement
+0x0006      Int16       Vertical Displacement (might need to add 255 when negative)
+0x0008      UInt8       Clear Color
+0x0009      UInt8       Compressed
+0x000a      UIn16       Unknown
+0x000c      UInt32      Image data size.            (unconfirmed)
+0x0010      UInt32      RLE Size                    (confirmed)
+0x0014      UInt16      Unknown
+0x0016      UInt16      Unknown
+0x0018      UInt32      RLE Offset                  Pixels are found here.
+0x001c      UInt32      Literal Offset
+0x0020      UInt32      Scanline Table Offset       Two tables with an offsets into the RLE and Literal data for every scanline.
+0x0024      UInt32      Unknown                     Size of the full resource.
+0x0028      UInt32      Unknown                     0
+0x002c      UInt32      Unknown                     0
+0x0030      UInt32      Unknown                     0
+
+
+If Palette Offset is not zero the palette for this view can be found there.
+
+RLE encoded image data starts at RLE Offset and is RLE Size bytes long. This
+will result in an image of Width*Height pixels.
+
+*** RLE Decoding
+
+A cel can specify two pointer, RLE Offset and Literal Offset. When only the RLE
+Offset is set we have one stream with run-length and color information.
+When both are set the run length encoding is split up into two streams, one with
+the run-length information and one with the color "literals".
+
+For SCI32 VGA games the Run Length Encoding is set up as follows.
+
+Only RLE Offset is set:
+
+DATA = [<CONTROL-BYTE><COLOR-LITERAL>+]+
+
+CONTROL-BYTE = <ACTION (2 bits)><LENGTH (6 bits)>
+
+ACTION = <0> <0> | <0> <1> | <1> <0> | <1> <1>
+
+When ACTION is set to:
+<0><0>: Copy LENGTH pixels from the input stream to the output stream.
+<0><1>: Copy LENGTH+64 pixels from the input stream to the output stream.
+<1><0>: The next LENGTH output pixels have the color of the next input byte.
+<1><1>: The next LENGTH pixels are transparent.
+
+When both RLE and Literal offsets are set:
+
+Works the exact same way as above, but then the CONTROL-BYTEs are read from the
+RLE stream and the COLOR-LITERALs from the Literal stream.
+
+
+
+*** Extra data after the pixel data
+
+After the RLE and Literal data there is another data stream that consists of two
+streams of ever increasing 32 bits values that both have the cells Height number
+of enties (2 * height * 4 bytes).
+
+Hypothesis: they are two lookup tables to offsets in the RLE and Literal streams
+that point to where to start decoding for that scan line? -> Confirmed!
+

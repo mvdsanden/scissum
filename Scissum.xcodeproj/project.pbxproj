@@ -51,6 +51,9 @@
 		C15A47211BFFE4CF00A756D2 /* Sci32PictureLoader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Sci32PictureLoader.hpp; path = src/sci/Sci32PictureLoader.hpp; sourceTree = "<group>"; };
 		C15A47221C00CFD000A756D2 /* ImageSaver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ImageSaver.cpp; path = src/graphics/ImageSaver.cpp; sourceTree = "<group>"; };
 		C15A47231C00CFD000A756D2 /* ImageSaver.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = ImageSaver.hpp; path = src/graphics/ImageSaver.hpp; sourceTree = "<group>"; };
+		C15A47241C02592E00A756D2 /* view.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = view.txt; path = docs/view.txt; sourceTree = "<group>"; };
+		C15A47251C03B71200A756D2 /* Endians.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Endians.cpp; path = src/tools/Endians.cpp; sourceTree = "<group>"; };
+		C15A47261C03B71200A756D2 /* Endians.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Endians.hpp; path = src/tools/Endians.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -83,6 +86,8 @@
 				C15A46F21BFE265400A756D2 /* DecompressorSource.hpp */,
 				C15A46FB1BFE4FDE00A756D2 /* LzsDecompressor.cpp */,
 				C15A46FC1BFE4FDE00A756D2 /* LzsDecompressor.hpp */,
+				C15A47251C03B71200A756D2 /* Endians.cpp */,
+				C15A47261C03B71200A756D2 /* Endians.hpp */,
 			);
 			name = tools;
 			sourceTree = "<group>";
@@ -122,6 +127,7 @@
 				C15A47071BFEBE5900A756D2 /* picture.txt */,
 				C15A47081BFECFF600A756D2 /* resource.txt */,
 				C15A47091BFED22A00A756D2 /* references.txt */,
+				C15A47241C02592E00A756D2 /* view.txt */,
 			);
 			name = docs;
 			sourceTree = "<group>";

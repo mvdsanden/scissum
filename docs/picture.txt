@@ -7,7 +7,7 @@
 0x0000      UInt16      Header Size
 0x0002      UInt8       Cel Count       (16 bit?)
 0x0003      UInt8       Unknown
-0x0004      UInt16      Unknown         (Farly certain this is the size of the Cel Header)
+0x0004      UInt16      Unknown         (Fairly certain this is the size of the Cel Header)
 0x0006      UInt32      Palette Offset
 0x000a      UInt16      Width
 0x000c      UInt16      Height
@@ -45,8 +45,8 @@ headers will follow each other.
 * Cel Header (42 bytes)
 0x0000      UInt16      Width
 0x0002      UInt16      Height
-0x0004      UInt16      Horizontal Displacement
-0x0006      UInt16      Vertical Displacement
+0x0004      Int16       Horizontal Displacement
+0x0006      Int16       Vertical Displacement
 0x0008      UInt8       Clear Color
 0x0009      UInt8       Compressed
 0x000a - 0x0017         Unknown

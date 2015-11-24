@@ -30,6 +30,8 @@ namespace scissum {
         
         virtual size_t skip(size_t length);
         
+        virtual size_t readOffset() const;
+        
     private:
         
         bool decompressByte(uint8_t &dest);
@@ -54,6 +56,8 @@ namespace scissum {
         size_t d_historyMatchLength;
         
         bool d_endOfData;
+        
+        size_t d_offset;
         
     };
     

@@ -9,6 +9,7 @@
 #include <iostream>
 #include <iomanip>
 #include <stdexcept>
+#include <cassert>
 
 #include "tools/lzsdecompressor.hpp"
 #include "tools/decompressorsource.hpp"
@@ -57,12 +58,17 @@ void test1()
             exit(1);
         }
         
+        if (d.readOffset() != len) {
+            std::cerr << "test1: FAILED (readOffset() incorrect).\n";
+            exit(1);
+        }
+        
     } catch (std::runtime_error &e) {
         std::cerr << "test1: FAILED (" << e.what() << ").\n";
         exit(1);
     }
     
-    std::cerr << "test1: SUCESS.\n";
+    std::cerr << "test1: SUCCESS.\n";
 }
 
 void test2()
@@ -88,6 +94,12 @@ void test2()
             std::cerr << "test2: FAILED (output incorrect).\n";
             exit(1);
         }
+
+        if (d.readOffset() != len) {
+            std::cerr << "test2: FAILED (readOffset() incorrect (" << d.readOffset() << ")).\n";
+            assert(0);
+            exit(1);
+        }
         
     } catch (std::runtime_error &e) {
         std::cerr << "test2: FAILED (" << e.what() << ").\n";
@@ -106,10 +118,14 @@ void test3()
     
     uint8_t buffer[16];
     
+    size_t offset = 0;
+    
     try {
         
         
         size_t len = d.skip(2);
+        
+        offset += len;
         
         std::cout << "Skipped " << len << " bytes.\n";
         
@@ -119,6 +135,8 @@ void test3()
         }
         
         len = d.read(buffer, 16);
+        
+        offset += len;
         
         std::cout << "Read " << len << " bytes.\n";
         
@@ -131,6 +149,12 @@ void test3()
             std::cerr << "test3: FAILED (output incorrect).\n";
             exit(1);
         }
+        
+        if (d.readOffset() != offset) {
+            std::cerr << "test3: FAILED (readOffset() incorrect).\n";
+            exit(1);
+        }
+
         
     } catch (std::runtime_error &e) {
         std::cerr << "test3: FAILED (" << e.what() << ").\n";

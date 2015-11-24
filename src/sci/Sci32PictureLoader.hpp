@@ -14,6 +14,7 @@
 namespace scissum {
     
     class Sci32Picture;
+    class Palette;
     class Reader;
     
     class Sci32PictureLoader
@@ -22,6 +23,17 @@ namespace scissum {
     public:
         
         virtual std::shared_ptr<Sci32Picture> loadPicture(std::shared_ptr<Reader> const &reader);
+        
+    private:
+        
+        struct ResourceHeader;
+        struct CelHeader;
+        struct PaletteHeader; // TODO: move to Sci32PaletteLoader.
+        
+        void readResourceHeader(std::shared_ptr<Reader> const &reader, ResourceHeader &header);
+        void readCelHeader(std::shared_ptr<Reader> const &reader, CelHeader &header, size_t length);
+        void readPalette(std::shared_ptr<Reader> const &reader, Palette &palette);
+        
         
     };
     

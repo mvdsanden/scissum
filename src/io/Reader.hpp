@@ -29,6 +29,11 @@ namespace scissum {
          */
         virtual size_t skip(size_t length) = 0;
         
+        /**
+         *  @return the current read pointer.
+         */
+        virtual size_t readOffset() const = 0;
+        
     };
     
 }
