@@ -1,11 +1,11 @@
 include ../defaults.mk
 
-NAME=tools
+NAME=vm
 LIBRARY_NAME=$(PROJECT_NAME)_$(NAME)
 
 CLASSES=\
-LzsDecompressor\
-DecompressorSource
+VM\
+MemoryManager
 
 OBJECTS=$(addsuffix .o,$(CLASSES))
 SOURCES=$(addsuffix .cpp,$(CLASSES))
@@ -18,4 +18,3 @@ clean:
 	rm -f *.o
 	rm -f *.a
 	rm -rf *.dSYM
-

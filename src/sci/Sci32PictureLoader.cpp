@@ -7,6 +7,7 @@
 //
 
 #include "Sci32PictureLoader.hpp"
+#include "Sci32PaletteLoader.hpp"
 #include "Sci32Picture.hpp"
 #include "Sci32PictureCel.hpp"
 #include "graphics/Palette.hpp"
@@ -43,16 +44,6 @@ struct Sci32PictureLoader::CelHeader {
     uint16_t priority;
     uint16_t relativeXPos;
     uint16_t relativeYPos;
-} __attribute__ ((packed));
-
-struct Sci32PictureLoader::PaletteHeader {
-    uint8_t unknown0[25];
-    uint8_t startingColor;
-    uint8_t unknown1[3];
-    uint16_t colorCount;
-    uint8_t unknown2;
-    uint8_t paletteFormat; // 0=>4 bytes per entry, 1=>3 bytes per entry.
-    uint8_t unknown3[5];
 } __attribute__ ((packed));
 
 void Sci32PictureLoader::readResourceHeader(std::shared_ptr<Reader> const &reader, ResourceHeader &header)
@@ -104,51 +95,6 @@ void Sci32PictureLoader::readCelHeader(std::shared_ptr<Reader> const &reader, Ce
     }
 }
 
-void Sci32PictureLoader::readPalette(std::shared_ptr<Reader> const &reader, Palette &palette)
-{
-    // Read the palette header.
-    PaletteHeader paletteHeader;
-    
-    size_t len = reader->read(reinterpret_cast<uint8_t*>(&paletteHeader), sizeof(paletteHeader));
-    
-    if (len != sizeof(paletteHeader)) {
-        throw std::runtime_error("resource seems corrupt, could not read palette header");
-    }
-    
-    paletteHeader.colorCount = letoh(paletteHeader.colorCount);
-    
-    // Read the palette data.
-    if (paletteHeader.paletteFormat == 0) {
-        uint8_t entry[4];
-        for (size_t i = paletteHeader.startingColor; i < paletteHeader.startingColor + paletteHeader.colorCount; ++i) {
-            len = reader->read(reinterpret_cast<uint8_t*>(entry), sizeof(entry));
-            
-            if (len != sizeof(entry)) {
-                throw std::runtime_error("resource seems corrupt, can't read palette data");
-            }
-            
-            palette[i].a = entry[3];
-            palette[i].r = entry[0];
-            palette[i].g = entry[1];
-            palette[i].b = entry[2];
-        }
-    } else {
-        uint8_t entry[3];
-        for (size_t i = paletteHeader.startingColor; i < paletteHeader.startingColor + paletteHeader.colorCount; ++i) {
-            len = reader->read(reinterpret_cast<uint8_t*>(entry), sizeof(entry));
-            
-            if (len != sizeof(entry)) {
-                throw std::runtime_error("resource seems corrupt, can't read palette data");
-            }
-            
-            palette[i].a = 255;
-            palette[i].r = entry[0];
-            palette[i].g = entry[1];
-            palette[i].b = entry[2];
-        }
-    }
-}
-
 // TODO: split up in multiple methods.
 std::shared_ptr<Sci32Picture> Sci32PictureLoader::loadPicture(std::shared_ptr<Reader> const &reader)
 {
@@ -182,7 +128,8 @@ std::shared_ptr<Sci32Picture> Sci32PictureLoader::loadPicture(std::shared_ptr<Re
     
     Palette palette;
     
-    readPalette(reader, palette);
+    Sci32PaletteLoader paletteLoader;
+    paletteLoader.load(reader, palette);
     
     // Loop through every cel.
     for (size_t c = 0; c < resourceHeader.celCount; ++c) {

@@ -1,0 +1,33 @@
+# Script
+
+<HEADER><EXPORT-TABLE><LOCALS><OBJECTS>
+
+** Script header
+
+0x0000      UInt32      Script offset
+0x0004      UInt32      Offset to string data
+0x0008      UInt32      Offset to something
+0x000c      UInt16      Locals count
+0x000e      UInt16      ??                      15
+0x0010      UInt16      ??                      30
+0x0012      UInt16      ??                      58
+0x0014      UInt16      Exports Count
+
+** Exports Table
+The exports table follows the script header and is an array of Expoprt Count
+UInt16s.
+
+** Locals Table
+The locals table follows the exports table directly, but is 4 byte aligned, so
+it might start a few bytes later.
+
+It seems that local variables are UInt16s.
+
+** Object Table
+The object table follows the locals table.
+
+** Object Header
+0x0000      UInt16      Magic number    0x1234
+0x0002      UInt16      Size
+0x0004      (U)Int16    Species         (super class?) -1 => no super class?
+0x000a      UInt16      Flags

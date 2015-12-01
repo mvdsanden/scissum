@@ -16,7 +16,7 @@
 Loop headers follow the resource header.
 
 ** Loop Header (16 bytes)
-0x0000      UInt16      Seek Entry      ??
+0x0000      UInt16      Seek Entry              It seems that when this is not 255 it is an index into the loop table to go to...
 0x0002      UInt8       Cel Count
 0x0003      UInt32      Unknown (seen 2x: 0xffffffff)
 0x0004      UInt8       Unknown (seen 2x: 3)
@@ -39,7 +39,7 @@ Cel Count cel headers can be found at Cel Data Offset.
 0x0016      UInt16      Unknown
 0x0018      UInt32      RLE Offset                  Pixels are found here.
 0x001c      UInt32      Literal Offset
-0x0020      UInt32      Scanline Table Offset       Two tables with an offsets into the RLE and Literal data for every scanline.
+0x0020      UInt32      Scanline Table Offset       Offset to two tables with an offsets into the RLE and Literal data for every scanline.
 0x0024      UInt32      Unknown                     Size of the full resource.
 0x0028      UInt32      Unknown                     0
 0x002c      UInt32      Unknown                     0

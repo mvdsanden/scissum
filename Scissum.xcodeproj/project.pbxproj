@@ -54,12 +54,42 @@
 		C15A47241C02592E00A756D2 /* view.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = view.txt; path = docs/view.txt; sourceTree = "<group>"; };
 		C15A47251C03B71200A756D2 /* Endians.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Endians.cpp; path = src/tools/Endians.cpp; sourceTree = "<group>"; };
 		C15A47261C03B71200A756D2 /* Endians.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Endians.hpp; path = src/tools/Endians.hpp; sourceTree = "<group>"; };
+		C15A47271C04C97A00A756D2 /* Sci32View.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Sci32View.cpp; path = src/sci/Sci32View.cpp; sourceTree = "<group>"; };
+		C15A47281C04C97A00A756D2 /* Sci32View.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Sci32View.hpp; path = src/sci/Sci32View.hpp; sourceTree = "<group>"; };
+		C15A47291C04CB1E00A756D2 /* Sci32ViewCel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Sci32ViewCel.cpp; path = src/sci/Sci32ViewCel.cpp; sourceTree = "<group>"; };
+		C15A472A1C04CB1E00A756D2 /* Sci32ViewCel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Sci32ViewCel.hpp; path = src/sci/Sci32ViewCel.hpp; sourceTree = "<group>"; };
+		C15A472B1C04CB4D00A756D2 /* Sci32Cel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Sci32Cel.cpp; path = src/sci/Sci32Cel.cpp; sourceTree = "<group>"; };
+		C15A472C1C04CB4D00A756D2 /* Sci32Cel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Sci32Cel.hpp; path = src/sci/Sci32Cel.hpp; sourceTree = "<group>"; };
+		C15A472D1C04D04700A756D2 /* Sci32ViewLoader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Sci32ViewLoader.cpp; path = src/sci/Sci32ViewLoader.cpp; sourceTree = "<group>"; };
+		C15A472E1C04D04700A756D2 /* Sci32ViewLoader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Sci32ViewLoader.hpp; path = src/sci/Sci32ViewLoader.hpp; sourceTree = "<group>"; };
+		C15A472F1C04F4C600A756D2 /* Sci32PaletteLoader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Sci32PaletteLoader.cpp; path = src/sci/Sci32PaletteLoader.cpp; sourceTree = "<group>"; };
+		C15A47301C04F4C600A756D2 /* Sci32PaletteLoader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Sci32PaletteLoader.hpp; path = src/sci/Sci32PaletteLoader.hpp; sourceTree = "<group>"; };
+		C15A47311C0521F000A756D2 /* script.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = script.txt; path = docs/script.txt; sourceTree = "<group>"; };
+		C15A47321C055E5200A756D2 /* createops.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = createops.cpp; path = src/vm/createops.cpp; sourceTree = "<group>"; };
+		C15A47331C0564D500A756D2 /* Instruction.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Instruction.cpp; path = src/vm/Instruction.cpp; sourceTree = "<group>"; };
+		C15A47341C0564D500A756D2 /* Instruction.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Instruction.hpp; path = src/vm/Instruction.hpp; sourceTree = "<group>"; };
+		C15A47351C05683200A756D2 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = src/vm/Makefile; sourceTree = "<group>"; usesTabs = 1; wrapsLines = 0; };
+		C15A47361C05F87400A756D2 /* Sci32Script.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Sci32Script.cpp; path = src/sci/Sci32Script.cpp; sourceTree = "<group>"; };
+		C15A47371C05F87400A756D2 /* Sci32Script.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Sci32Script.hpp; path = src/sci/Sci32Script.hpp; sourceTree = "<group>"; };
+		C15A47381C0602A400A756D2 /* Sci32ScriptLoader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Sci32ScriptLoader.cpp; path = src/sci/Sci32ScriptLoader.cpp; sourceTree = "<group>"; };
+		C15A47391C0602A400A756D2 /* Sci32ScriptLoader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Sci32ScriptLoader.hpp; path = src/sci/Sci32ScriptLoader.hpp; sourceTree = "<group>"; };
+		C15A473A1C0604B100A756D2 /* Sci32ScriptWriter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Sci32ScriptWriter.cpp; path = src/sci/Sci32ScriptWriter.cpp; sourceTree = "<group>"; wrapsLines = 0; };
+		C15A473B1C0604B100A756D2 /* Sci32ScriptWriter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Sci32ScriptWriter.hpp; path = src/sci/Sci32ScriptWriter.hpp; sourceTree = "<group>"; };
+		C15A473C1C06592400A756D2 /* VM.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = VM.cpp; path = src/vm/VM.cpp; sourceTree = "<group>"; };
+		C15A473D1C06592400A756D2 /* VM.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = VM.hpp; path = src/vm/VM.hpp; sourceTree = "<group>"; };
+		C15A473E1C065C7300A756D2 /* test_vm.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test_vm.cpp; path = src/tests/test_vm.cpp; sourceTree = "<group>"; };
+		C15A47431C0CB06F00A756D2 /* MemoryManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MemoryManager.cpp; path = src/vm/MemoryManager.cpp; sourceTree = "<group>"; };
+		C15A47441C0CB06F00A756D2 /* MemoryManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = MemoryManager.hpp; path = src/vm/MemoryManager.hpp; sourceTree = "<group>"; };
+		C15A47451C0CFE7C00A756D2 /* test_memorymanager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test_memorymanager.cpp; path = src/tests/test_memorymanager.cpp; sourceTree = "<group>"; };
+		C15A47471C0E026800A756D2 /* BitWiseTrie.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BitWiseTrie.cpp; path = src/utils/BitWiseTrie.cpp; sourceTree = "<group>"; };
+		C15A47481C0E026800A756D2 /* BitWiseTrie.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = BitWiseTrie.hpp; path = src/utils/BitWiseTrie.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		C15A46E31BFE247A00A756D2 = {
 			isa = PBXGroup;
 			children = (
+				C15A47461C0E023C00A756D2 /* utils */,
 				C15A471D1BFFE0AB00A756D2 /* io */,
 				C15A470C1BFF7A5500A756D2 /* graphics */,
 				C15A470A1BFF631700A756D2 /* vm */,
@@ -99,6 +129,8 @@
 				C15A46F81BFE3D0B00A756D2 /* test_decompressormemorysource.cpp */,
 				C15A46FD1BFE5DEB00A756D2 /* test_lzsdecompressor.cpp */,
 				C15A471A1BFFCB3E00A756D2 /* test_decompressorfilesource.cpp */,
+				C15A473E1C065C7300A756D2 /* test_vm.cpp */,
+				C15A47451C0CFE7C00A756D2 /* test_memorymanager.cpp */,
 			);
 			name = tests;
 			sourceTree = "<group>";
@@ -106,9 +138,9 @@
 		C15A47001BFE84CF00A756D2 /* sci */ = {
 			isa = PBXGroup;
 			children = (
+				C15A47031BFE87D100A756D2 /* Makefile */,
 				C15A47011BFE85DB00A756D2 /* Sci32ResourceFileScanner.cpp */,
 				C15A47021BFE85DB00A756D2 /* Sci32ResourceFileScanner.hpp */,
-				C15A47031BFE87D100A756D2 /* Makefile */,
 				C15A47161BFF860000A756D2 /* Sci32Picture.cpp */,
 				C15A47171BFF860000A756D2 /* Sci32Picture.hpp */,
 				C15A47181BFF87D100A756D2 /* Sci32PictureCel.cpp */,
@@ -117,6 +149,22 @@
 				C15A471C1BFFD7FC00A756D2 /* ResourceManager.hpp */,
 				C15A47201BFFE4CF00A756D2 /* Sci32PictureLoader.cpp */,
 				C15A47211BFFE4CF00A756D2 /* Sci32PictureLoader.hpp */,
+				C15A47271C04C97A00A756D2 /* Sci32View.cpp */,
+				C15A47281C04C97A00A756D2 /* Sci32View.hpp */,
+				C15A47291C04CB1E00A756D2 /* Sci32ViewCel.cpp */,
+				C15A472A1C04CB1E00A756D2 /* Sci32ViewCel.hpp */,
+				C15A472B1C04CB4D00A756D2 /* Sci32Cel.cpp */,
+				C15A472C1C04CB4D00A756D2 /* Sci32Cel.hpp */,
+				C15A472D1C04D04700A756D2 /* Sci32ViewLoader.cpp */,
+				C15A472E1C04D04700A756D2 /* Sci32ViewLoader.hpp */,
+				C15A472F1C04F4C600A756D2 /* Sci32PaletteLoader.cpp */,
+				C15A47301C04F4C600A756D2 /* Sci32PaletteLoader.hpp */,
+				C15A47361C05F87400A756D2 /* Sci32Script.cpp */,
+				C15A47371C05F87400A756D2 /* Sci32Script.hpp */,
+				C15A47381C0602A400A756D2 /* Sci32ScriptLoader.cpp */,
+				C15A47391C0602A400A756D2 /* Sci32ScriptLoader.hpp */,
+				C15A473A1C0604B100A756D2 /* Sci32ScriptWriter.cpp */,
+				C15A473B1C0604B100A756D2 /* Sci32ScriptWriter.hpp */,
 			);
 			name = sci;
 			sourceTree = "<group>";
@@ -128,6 +176,7 @@
 				C15A47081BFECFF600A756D2 /* resource.txt */,
 				C15A47091BFED22A00A756D2 /* references.txt */,
 				C15A47241C02592E00A756D2 /* view.txt */,
+				C15A47311C0521F000A756D2 /* script.txt */,
 			);
 			name = docs;
 			sourceTree = "<group>";
@@ -135,7 +184,15 @@
 		C15A470A1BFF631700A756D2 /* vm */ = {
 			isa = PBXGroup;
 			children = (
+				C15A47351C05683200A756D2 /* Makefile */,
 				C15A470B1BFF638A00A756D2 /* instructions.inc */,
+				C15A47321C055E5200A756D2 /* createops.cpp */,
+				C15A47331C0564D500A756D2 /* Instruction.cpp */,
+				C15A47341C0564D500A756D2 /* Instruction.hpp */,
+				C15A473C1C06592400A756D2 /* VM.cpp */,
+				C15A473D1C06592400A756D2 /* VM.hpp */,
+				C15A47431C0CB06F00A756D2 /* MemoryManager.cpp */,
+				C15A47441C0CB06F00A756D2 /* MemoryManager.hpp */,
 			);
 			name = vm;
 			sourceTree = "<group>";
@@ -143,9 +200,9 @@
 		C15A470C1BFF7A5500A756D2 /* graphics */ = {
 			isa = PBXGroup;
 			children = (
+				C15A470F1BFF7B9000A756D2 /* Makefile */,
 				C15A470D1BFF7A7A00A756D2 /* Palette.cpp */,
 				C15A470E1BFF7A7A00A756D2 /* Palette.hpp */,
-				C15A470F1BFF7B9000A756D2 /* Makefile */,
 				C15A47101BFF7C0800A756D2 /* Color.cpp */,
 				C15A47111BFF7C0800A756D2 /* Color.hpp */,
 				C15A47121BFF7D4600A756D2 /* PixelBuffer.cpp */,
@@ -164,6 +221,15 @@
 				C15A471F1BFFE0FE00A756D2 /* Reader.hpp */,
 			);
 			name = io;
+			sourceTree = "<group>";
+		};
+		C15A47461C0E023C00A756D2 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				C15A47471C0E026800A756D2 /* BitWiseTrie.cpp */,
+				C15A47481C0E026800A756D2 /* BitWiseTrie.hpp */,
+			);
+			name = utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

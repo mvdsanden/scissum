@@ -9,13 +9,12 @@
 #ifndef Sci32PictureCel_hpp
 #define Sci32PictureCel_hpp
 
-#include <memory>
+#include "Sci32Cel.hpp"
 
 namespace scissum {
     
-    class Image;
-    
     class Sci32PictureCel
+    : public Sci32Cel
     {
     public:
         
@@ -25,33 +24,17 @@ namespace scissum {
                         size_t relativeXPos,
                         size_t relativeYPos);
         
-        ~Sci32PictureCel();
+        virtual ~Sci32PictureCel();
         
-        void setImage(std::unique_ptr<Image> &&image);
-        
-        size_t width() const;
-        size_t height() const;
-        size_t horzDisplacement() const;
-        size_t vertDisplacement() const;
         size_t priority() const;
         size_t relativeXPos() const;
-        size_t relativeYPos() const;
-        
-        Image const &image() const;
-        
-        Image &image();
+        size_t relativeYPos() const;        
         
     private:
         
-        size_t d_width;
-        size_t d_height;
-        size_t d_horzDisplacement;
-        size_t d_vertDisplacement;
         size_t d_priority;
         size_t d_relativeXPos;
         size_t d_relativeYPos;
-        
-        std::unique_ptr<Image> d_image;
         
     };
     

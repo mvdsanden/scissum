@@ -83,6 +83,12 @@ namespace scissum {
             }
         }
         
+        virtual size_t getResourceSize(size_t type, size_t id)
+        {
+            auto i = d_table.find(std::make_pair(type, id));
+            return (i == d_table.end()?0:i->second->uncompressedSize);
+        }
+        
     private:
         
         struct ResourceEntry {

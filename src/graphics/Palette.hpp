@@ -27,6 +27,8 @@ namespace scissum {
         Color *ptr();
         Color const *ptr() const;
         
+        void setSafetyPalette();
+        
     private:
         
         __declspec( align( 16 ) ) Color d_table[256];

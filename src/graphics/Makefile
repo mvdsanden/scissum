@@ -17,5 +17,6 @@ all: $(OBJECTS)
 	$(AR) rvs $(LIBRARY_NAME).a $(OBJECTS)
 
 clean:
-	rm *.o
-	rm *.a
+	rm -f *.o
+	rm -f *.a
+	rm -rf *.dSYM

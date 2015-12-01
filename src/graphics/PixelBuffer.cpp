@@ -53,12 +53,12 @@ Color *MemoryPixelBuffer::mapReadWrite()
     return d_pixels;
 }
 
-Color const *MemoryPixelBuffer::mapReadOnly()
+Color const *MemoryPixelBuffer::mapReadOnly() const
 {
     return d_pixels;
 }
 
-void MemoryPixelBuffer::unmap()
+void MemoryPixelBuffer::unmap() const
 {
     // Nothing to do.
 }

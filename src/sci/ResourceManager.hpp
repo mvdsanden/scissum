@@ -32,6 +32,8 @@ namespace scissum {
         
         virtual std::shared_ptr<Reader> openResource(size_t type, size_t id) = 0;
         
+        virtual size_t getResourceSize(size_t type, size_t id) = 0;
+        
     };
     
 }
