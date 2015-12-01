@@ -15,7 +15,7 @@
 		C15A46F51BFE36B400A756D2 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; name = Makefile; path = src/tools/Makefile; sourceTree = "<group>"; usesTabs = 1; };
 		C15A46F61BFE36F300A756D2 /* defaults.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = defaults.mk; path = src/defaults.mk; sourceTree = "<group>"; };
 		C15A46F81BFE3D0B00A756D2 /* test_decompressormemorysource.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test_decompressormemorysource.cpp; path = src/tests/test_decompressormemorysource.cpp; sourceTree = "<group>"; };
-		C15A46FA1BFE3D3800A756D2 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = src/tests/Makefile; sourceTree = "<group>"; usesTabs = 1; };
+		C15A46FA1BFE3D3800A756D2 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = src/tests/Makefile; sourceTree = "<group>"; usesTabs = 1; wrapsLines = 0; };
 		C15A46FB1BFE4FDE00A756D2 /* LzsDecompressor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = LzsDecompressor.cpp; path = src/tools/LzsDecompressor.cpp; sourceTree = "<group>"; };
 		C15A46FC1BFE4FDE00A756D2 /* LzsDecompressor.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = LzsDecompressor.hpp; path = src/tools/LzsDecompressor.hpp; sourceTree = "<group>"; };
 		C15A46FD1BFE5DEB00A756D2 /* test_lzsdecompressor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test_lzsdecompressor.cpp; path = src/tests/test_lzsdecompressor.cpp; sourceTree = "<group>"; };
@@ -83,6 +83,11 @@
 		C15A47451C0CFE7C00A756D2 /* test_memorymanager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test_memorymanager.cpp; path = src/tests/test_memorymanager.cpp; sourceTree = "<group>"; };
 		C15A47471C0E026800A756D2 /* BitWiseTrie.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BitWiseTrie.cpp; path = src/utils/BitWiseTrie.cpp; sourceTree = "<group>"; };
 		C15A47481C0E026800A756D2 /* BitWiseTrie.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = BitWiseTrie.hpp; path = src/utils/BitWiseTrie.hpp; sourceTree = "<group>"; };
+		C15A47491C0E10C000A756D2 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = src/utils/Makefile; sourceTree = "<group>"; usesTabs = 1; wrapsLines = 0; };
+		C15A474A1C0E119A00A756D2 /* test_bitwisetrie.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test_bitwisetrie.cpp; path = src/tests/test_bitwisetrie.cpp; sourceTree = "<group>"; };
+		C15A474B1C0E23E000A756D2 /* BitWiseTrie2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BitWiseTrie2.cpp; path = src/utils/BitWiseTrie2.cpp; sourceTree = "<group>"; };
+		C15A474C1C0E23E000A756D2 /* BitWiseTrie2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = BitWiseTrie2.hpp; path = src/utils/BitWiseTrie2.hpp; sourceTree = "<group>"; };
+		C15A474D1C0E276700A756D2 /* test_bitwisetrie2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test_bitwisetrie2.cpp; path = src/tests/test_bitwisetrie2.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -131,6 +136,8 @@
 				C15A471A1BFFCB3E00A756D2 /* test_decompressorfilesource.cpp */,
 				C15A473E1C065C7300A756D2 /* test_vm.cpp */,
 				C15A47451C0CFE7C00A756D2 /* test_memorymanager.cpp */,
+				C15A474A1C0E119A00A756D2 /* test_bitwisetrie.cpp */,
+				C15A474D1C0E276700A756D2 /* test_bitwisetrie2.cpp */,
 			);
 			name = tests;
 			sourceTree = "<group>";
@@ -226,8 +233,11 @@
 		C15A47461C0E023C00A756D2 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				C15A47491C0E10C000A756D2 /* Makefile */,
 				C15A47471C0E026800A756D2 /* BitWiseTrie.cpp */,
 				C15A47481C0E026800A756D2 /* BitWiseTrie.hpp */,
+				C15A474B1C0E23E000A756D2 /* BitWiseTrie2.cpp */,
+				C15A474C1C0E23E000A756D2 /* BitWiseTrie2.hpp */,
 			);
 			name = utils;
 			sourceTree = "<group>";

@@ -7,14 +7,18 @@ LDFLAGS=\
 $(DOCUMENT_PATH)/src/tools/scissum_tools.a\
 $(DOCUMENT_PATH)/src/sci/scissum_sci.a\
 $(DOCUMENT_PATH)/src/graphics/scissum_graphics.a\
-$(DOCUMENT_PATH)/src/vm/scissum_vm.a
+$(DOCUMENT_PATH)/src/vm/scissum_vm.a\
+$(DOCUMENT_PATH)/src/utils/scissum_utils.a
 
 #CXXFLAGS=-std=c++11
 
-all: tools sci graphics vm ResourceScanner ResourceExtractor
+all: tools utils sci graphics vm ResourceScanner ResourceExtractor
 
 tools:
 	$(MAKE) -C src/tools
+
+utils:
+	$(MAKE) -C src/utils
 
 sci:
 	$(MAKE) -C src/sci
