@@ -9,6 +9,8 @@
 #ifndef BitWiseTrie_hpp
 #define BitWiseTrie_hpp
 
+#include "tools/Binary.hpp"
+
 //#include <iostream>
 
 #include <cstring>
@@ -87,7 +89,7 @@ namespace scissum {
         
         Node *find(_Key key)
         {
-            int z = (key != 0?__builtin_clz(key):(sizeof(_Key) * 8));
+            int z = (key != 0?countLeadingZeros(key):(sizeof(_Key) * 8));
             Node *root = d_zeroTable[z];
             int c = (sizeof(_Key) * 8) - z;
             
@@ -106,7 +108,7 @@ namespace scissum {
         
         Leaf *insert(_Key key)
         {
-            int z = (key != 0?__builtin_clz(key):(sizeof(_Key) * 8));
+            int z = (key != 0?countLeadingZeros(key):(sizeof(_Key) * 8));
             Node *root = d_zeroTable[z];
             int c = (sizeof(_Key) * 8) - z;
             
@@ -216,6 +218,8 @@ namespace scissum {
     private:
         
         Node *d_zeroTable[sizeof(_Key)*8+1];
+        
+        
         
     };
     

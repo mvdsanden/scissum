@@ -149,14 +149,13 @@ namespace scissum {
             memset(d_base, 0, sizeof(HeapHeader));
             HeapHeader *header = reinterpret_cast<HeapHeader*>(d_base);
             header->size = d_heapSize;
-//            header->freeHead = sizeof(HeapHeader);
             header->freeBins[9] = sizeof(HeapHeader);
             
             // Initialize the first and only free chunk.
-            FreeChunk *fc = offsetToFreeChunk(sizeof(HeapHeader));// reinterpret_cast<FreeChunk*>(d_base + sizeof(HeapHeader));
+            FreeChunk *fc = offsetToFreeChunk(sizeof(HeapHeader));
             fc->ch.flags = FLAG_FREE;
             fc->ch.prev = 0;
-            fc->ch.size = header->size - sizeof(HeapHeader);// - sizeof(ChunkHeader);
+            fc->ch.size = header->size - sizeof(HeapHeader);
             fc->fh.prev = fc->fh.next = sizeof(HeapHeader);
         }
         
@@ -229,18 +228,6 @@ namespace scissum {
             return d_base;
         }
         
-        /*
-        FreeChunk *freeChunkHead()
-        {
-            return offsetToFreeChunk(heapHeader()->freeHead);
-        }
-        
-        void setFreeChunkHead(FreeChunk *fc)
-        {
-            heapHeader()->freeHead = ptrToOffset(fc);
-        }
-         */
-        
         FreeChunk *freeChunkBin(size_t bin)
         {
             assert(bin < 10);
@@ -270,13 +257,12 @@ namespace scissum {
                 ++bin;
             }
             
-            // TODO: optimize by putting the free head in bin 9.
             return offsetToFreeChunk(heapHeader()->freeBins[std::min<size_t>(9, bin)]);
         }
         
         FreeChunk *findFreeChunk(size_t bytes)
         {
-            FreeChunk *head = findFreeChunkBinHead(bytes);// freeChunkHead();
+            FreeChunk *head = findFreeChunkBinHead(bytes);
             
             if (head == null()) {
                 return reinterpret_cast<FreeChunk*>(null());
@@ -350,11 +336,11 @@ namespace scissum {
             
             size_t bin = std::min<size_t>(9, calculateFreeChunkBin(fc->ch.size));
             
-            FreeChunk *head = freeChunkBin(bin);// freeChunkHead();
+            FreeChunk *head = freeChunkBin(bin);
             
             if (head == null()) {
                 fc->fh.prev = fc->fh.next = ptrToOffset(fc);
-                setFreeChunkBin(bin, fc); //setFreeChunkHead(fc);
+                setFreeChunkBin(bin, fc);
             } else {
                 fc->fh.prev = head->fh.prev;
                 fc->fh.next = ptrToOffset(head);
@@ -372,7 +358,6 @@ namespace scissum {
             if (fc->fh.next == ptrToOffset(fc)) {
                 size_t bin = std::min<size_t>(9, calculateFreeChunkBin(fc->ch.size));
                 setFreeChunkBin(bin, reinterpret_cast<FreeChunk*>(null()));
-                //setFreeChunkHead(reinterpret_cast<FreeChunk*>(null()));
             } else {
                 offsetToFreeChunk(fc->fh.next)->fh.prev = fc->fh.prev;
                 offsetToFreeChunk(fc->fh.prev)->fh.next = fc->fh.next;

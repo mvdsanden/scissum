@@ -100,7 +100,7 @@ void test1b()
     }
 
     for (size_t i = 0; i < 20000000; ++i) {
-        auto *n = trie.insert(i);
+        auto *n = trie.find(i);
         
         if (n == nullptr || !n->leaf || reinterpret_cast<BitWiseTrie<uint32_t, int>::Leaf*>(n)->value != i) {
             std::cout << "test1b: FAILED.\n";

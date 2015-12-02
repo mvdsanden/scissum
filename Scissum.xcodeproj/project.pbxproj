@@ -88,6 +88,8 @@
 		C15A474B1C0E23E000A756D2 /* BitWiseTrie2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BitWiseTrie2.cpp; path = src/utils/BitWiseTrie2.cpp; sourceTree = "<group>"; };
 		C15A474C1C0E23E000A756D2 /* BitWiseTrie2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = BitWiseTrie2.hpp; path = src/utils/BitWiseTrie2.hpp; sourceTree = "<group>"; };
 		C15A474D1C0E276700A756D2 /* test_bitwisetrie2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test_bitwisetrie2.cpp; path = src/tests/test_bitwisetrie2.cpp; sourceTree = "<group>"; };
+		C15A474E1C0EAE4900A756D2 /* Binary.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Binary.cpp; path = src/tools/Binary.cpp; sourceTree = "<group>"; };
+		C15A474F1C0EAE4900A756D2 /* Binary.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Binary.hpp; path = src/tools/Binary.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -123,6 +125,8 @@
 				C15A46FC1BFE4FDE00A756D2 /* LzsDecompressor.hpp */,
 				C15A47251C03B71200A756D2 /* Endians.cpp */,
 				C15A47261C03B71200A756D2 /* Endians.hpp */,
+				C15A474E1C0EAE4900A756D2 /* Binary.cpp */,
+				C15A474F1C0EAE4900A756D2 /* Binary.hpp */,
 			);
 			name = tools;
 			sourceTree = "<group>";
