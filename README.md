@@ -10,7 +10,7 @@ We'll see if I find the time to finish it :).
 * Virtual Machine
   - Most instructions are implemented, a few are remaining. Using a simple big switch mechanism for
     running the instructions. I am thinking of trying to convert the script to LLVM, because I like
-    to learn more about LLVM as well, but for now descided that I first should create a working
+    to learn more about LLVM as well, but for now decided that I first should create a working
     engine before doing that.
   - Kernel functions still need to be implemented.
   - Implemented a custom memory heap allocator for the VM.
