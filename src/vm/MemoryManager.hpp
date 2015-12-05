@@ -9,6 +9,8 @@
 #ifndef MemoryManager_hpp
 #define MemoryManager_hpp
 
+#include <string>
+
 #include <cstdint>
 #include <cassert>
 
@@ -18,24 +20,7 @@ namespace scissum {
     {
     public:
         
-        class Ptr
-        {
-            
-            size_t d_handle;
-            
-        public:
-            
-            Ptr(size_t handle);
-            
-            size_t handle() const;
-            size_t size() const;
-            uint8_t const *nativePtr() const;
-            uint8_t *nativePtr();
-            
-            template <class T> T const &as() const;
-            template <class T> T &as();
-            
-        };
+        typedef size_t HeapIndex;
         
         static MemoryManager &instance();
         
@@ -43,58 +28,29 @@ namespace scissum {
         
         virtual void reset() = 0;
         
-        virtual void import(uint8_t *buffer, size_t size) = 0;
+        virtual void load(std::string const &filename) = 0;
         
-        virtual Ptr allocate(size_t bytes) = 0;
+        virtual void save(std::string const &filename) = 0;
         
-        virtual void free(Ptr const &p) = 0;
+        virtual HeapIndex allocate(size_t bytes) = 0;
         
-        virtual size_t sizeOf(size_t handle) const = 0;
+        virtual void free(HeapIndex p) = 0;
         
-        virtual uint8_t const *nativePtr(size_t handle) const = 0;
+        virtual bool validate(HeapIndex p, size_t bytes) const = 0;
         
-        virtual uint8_t *nativePtr(size_t handle) = 0;
+        virtual size_t sizeOf(HeapIndex index) const = 0;
+        
+        virtual uint8_t const *nativePtr(HeapIndex index) const = 0;
+        
+        virtual uint8_t *nativePtr(HeapIndex index) = 0;
+        
+        virtual HeapIndex pointerTo(void *p) = 0;
+        
+        virtual void printHeapChunks() = 0;
+        
+        virtual bool checkHeap() = 0;
         
     };
-    
-    inline MemoryManager::Ptr::Ptr(size_t handle)
-    : d_handle(handle)
-    {
-    }    
-    
-    inline size_t MemoryManager::Ptr::handle() const
-    {
-        return d_handle;
-    }
-    
-    inline size_t MemoryManager::Ptr::size() const
-    {
-        return MemoryManager::instance().sizeOf(d_handle);
-    }
-    
-    inline uint8_t const *MemoryManager::Ptr::nativePtr() const
-    {
-        return MemoryManager::instance().nativePtr(d_handle);
-    }
-    
-    inline uint8_t *MemoryManager::Ptr::nativePtr()
-    {
-        return MemoryManager::instance().nativePtr(d_handle);
-    }
-    
-    template <class T>
-    inline T const &MemoryManager::Ptr::as() const
-    {
-        assert(sizeof(T) <= size());
-        return *reinterpret_cast<T const *>(nativePtr());
-    }
-    
-    template <class T>
-    inline T &MemoryManager::Ptr::as()
-    {
-        assert(sizeof(T) <= size());
-        return *reinterpret_cast<T*>(nativePtr());
-    }
     
 }
 

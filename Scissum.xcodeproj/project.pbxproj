@@ -91,6 +91,12 @@
 		C15A474E1C0EAE4900A756D2 /* Binary.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Binary.cpp; path = src/tools/Binary.cpp; sourceTree = "<group>"; };
 		C15A474F1C0EAE4900A756D2 /* Binary.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Binary.hpp; path = src/tools/Binary.hpp; sourceTree = "<group>"; };
 		C15A47501C0F614700A756D2 /* test_allocators.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test_allocators.cpp; path = src/tests/test_allocators.cpp; sourceTree = "<group>"; };
+		C15A47511C10D26D00A756D2 /* HeapPointer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HeapPointer.cpp; path = src/vm/HeapPointer.cpp; sourceTree = "<group>"; };
+		C15A47521C10D26D00A756D2 /* HeapPointer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = HeapPointer.hpp; path = src/vm/HeapPointer.hpp; sourceTree = "<group>"; };
+		C15A47531C10DF3700A756D2 /* HeapAllocator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HeapAllocator.cpp; path = src/vm/HeapAllocator.cpp; sourceTree = "<group>"; };
+		C15A47541C10DF3700A756D2 /* HeapAllocator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = HeapAllocator.hpp; path = src/vm/HeapAllocator.hpp; sourceTree = "<group>"; };
+		C15A47551C10E6B400A756D2 /* test_heapallocator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test_heapallocator.cpp; path = src/tests/test_heapallocator.cpp; sourceTree = "<group>"; };
+		C1FF3C871C12351700F19DE4 /* HeapPointer.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = HeapPointer.hh; path = src/vm/HeapPointer.hh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -144,6 +150,7 @@
 				C15A474A1C0E119A00A756D2 /* test_bitwisetrie.cpp */,
 				C15A474D1C0E276700A756D2 /* test_bitwisetrie2.cpp */,
 				C15A47501C0F614700A756D2 /* test_allocators.cpp */,
+				C15A47551C10E6B400A756D2 /* test_heapallocator.cpp */,
 			);
 			name = tests;
 			sourceTree = "<group>";
@@ -206,6 +213,11 @@
 				C15A473D1C06592400A756D2 /* VM.hpp */,
 				C15A47431C0CB06F00A756D2 /* MemoryManager.cpp */,
 				C15A47441C0CB06F00A756D2 /* MemoryManager.hpp */,
+				C15A47511C10D26D00A756D2 /* HeapPointer.cpp */,
+				C15A47521C10D26D00A756D2 /* HeapPointer.hpp */,
+				C1FF3C871C12351700F19DE4 /* HeapPointer.hh */,
+				C15A47531C10DF3700A756D2 /* HeapAllocator.cpp */,
+				C15A47541C10DF3700A756D2 /* HeapAllocator.hpp */,
 			);
 			name = vm;
 			sourceTree = "<group>";

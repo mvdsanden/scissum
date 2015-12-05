@@ -5,7 +5,9 @@ LIBRARY_NAME=$(PROJECT_NAME)_$(NAME)
 
 CLASSES=\
 VM\
-MemoryManager
+MemoryManager\
+HeapPointer\
+HeapAllocator
 
 OBJECTS=$(addsuffix .o,$(CLASSES))
 SOURCES=$(addsuffix .cpp,$(CLASSES))
