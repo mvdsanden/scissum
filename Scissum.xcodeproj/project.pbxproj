@@ -103,19 +103,18 @@
 		C15A46E31BFE247A00A756D2 = {
 			isa = PBXGroup;
 			children = (
+				C15A46F61BFE36F300A756D2 /* defaults.mk */,
+				C15A46F41BFE366900A756D2 /* Makefile */,
+				C15A46FF1BFE7E1C00A756D2 /* LICENSE */,
+				C15A46FE1BFE7E1C00A756D2 /* README.md */,
+				C1FF3C881C1361E300F19DE4 /* Apps */,
 				C15A47461C0E023C00A756D2 /* utils */,
 				C15A471D1BFFE0AB00A756D2 /* io */,
 				C15A470C1BFF7A5500A756D2 /* graphics */,
 				C15A470A1BFF631700A756D2 /* vm */,
 				C15A47061BFEBE3400A756D2 /* docs */,
-				C15A47051BFE8F6D00A756D2 /* ResourceExtractor.cpp */,
-				C15A47041BFE88A100A756D2 /* ResourceScanner.cpp */,
 				C15A47001BFE84CF00A756D2 /* sci */,
-				C15A46FE1BFE7E1C00A756D2 /* README.md */,
-				C15A46FF1BFE7E1C00A756D2 /* LICENSE */,
 				C15A46F91BFE3D1400A756D2 /* tests */,
-				C15A46F61BFE36F300A756D2 /* defaults.mk */,
-				C15A46F41BFE366900A756D2 /* Makefile */,
 				C15A46F01BFE250000A756D2 /* tools */,
 			);
 			sourceTree = "<group>";
@@ -258,6 +257,15 @@
 				C15A474C1C0E23E000A756D2 /* BitWiseTrie2.hpp */,
 			);
 			name = utils;
+			sourceTree = "<group>";
+		};
+		C1FF3C881C1361E300F19DE4 /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				C15A47051BFE8F6D00A756D2 /* ResourceExtractor.cpp */,
+				C15A47041BFE88A100A756D2 /* ResourceScanner.cpp */,
+			);
+			name = Apps;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
