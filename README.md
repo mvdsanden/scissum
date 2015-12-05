@@ -9,12 +9,12 @@ We'll see if I find the time to finish it :).
   - Extraction and parsing of Picture, View and Script (needs a little work) resources is working.
 * Virtual Machine
   - Most instructions are implemented, a few are remaining. Using a simple big switch mechanism for
-    running the instructions. I am thinking of trying to convert the script to LLVM, because I like
+    running the instructions. I am thinking of trying to convert the scripts to LLVM because I like
     to learn more about LLVM as well, but for now decided that I first should create a working
     engine before doing that.
   - Kernel functions still need to be implemented.
   - Implemented a custom memory heap allocator for the VM.
-    - For now this is a first-fit allocator, but I'm working on a bit wise trie (already working, but needs so refactoring and optimisation) to make an efficient best-fit version.
+    - For now this is a first-fit allocator, but I'm working on a bit wise trie (already working, but needs some refactoring and optimisation) to make an efficient best-fit version.
 - Also created a STL allocator for the custom heap so STL objects can be store inside the VM heap (which is actually kind of cool ;)).
 * Graphics
   - Only some containers implemented (Color, Image, Palette) and an ImageSaver for the PNM format.
@@ -31,8 +31,8 @@ that there is support for SCI32, so LSL7 support might be close.
 #But, Why??
 For now this project was started because I liked to make a game engine but
 lack the skills and time for content creation, so why not start by making
-a game engine for a game that already exists? :). Also I always really liked LSL7
-when I was younger, so that is a good motivation (and I'm ignoring that fact that
+a game engine for a game that already exists? :). I also really liked LSL7
+when I was younger, so that is a good motivation (and I'm ignoring the fact that
 DosBox exists...).
 
 # References
