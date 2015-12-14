@@ -13,6 +13,9 @@
 
 #include <cstdint>
 
+#include "HeapPointer.hpp"
+#include "HeapAllocator.hpp"
+
 #include "instructions.inc"
 
 namespace scissum {
@@ -25,6 +28,7 @@ namespace scissum {
         
         typedef std::function<void (uint8_t const *pc, size_t const *st, size_t acc)> OpTraceHandler;
         
+        // TODO: move VM state to separate struct and pass an address to that in a KernelFunction call.
         typedef std::function<void (size_t functionId, size_t argc, size_t *args)> KernelFunction;
         
         static VM &instance();
@@ -33,7 +37,23 @@ namespace scissum {
         
         virtual void registerKernelFunction(uint16_t id, KernelFunction const &function) = 0;
         
-        virtual size_t execute(uint8_t const *bytecode, size_t length) = 0;
+        virtual size_t execute(uint8_t const *bytecode, size_t length, HeapPointerBase args = nullptr, size_t argc = 0) = 0;
+
+        template <class ... Args>
+        size_t execute(uint8_t const *bytecode, size_t length, Args ... args)
+        {
+            HeapAllocator<std::tuple<Args...>> allocator;
+            
+            HeapPointerBase a = allocator.allocate(1);
+            allocator.construct(a, args...);
+            
+            size_t result = execute(bytecode, length, a, sizeof...(args));
+            
+            //allocator.destroy(a);
+            allocator.deallocate(a);
+            
+            return result;
+        }
         
         virtual size_t *stackPointer() const = 0;
         
@@ -43,7 +63,7 @@ namespace scissum {
         
         enum Instructions {
             
-#define SCISSUM_VM_INSTRUCTION_ENUM(OpCode, TotalSize, Name, Alias, ArgCount, Arg0, Arg1, Arg2, Desc)\
+#define SCISSUM_VM_INSTRUCTION_ENUM(OpCode, TotalSize, Name, Alias, ArgCount, Arg0, Arg1, Arg2, Desc, ...)\
 OP_##Name##_##Alias = OpCode,
             
             SCISSUM_SCI_INSTRUCTIONS(SCISSUM_VM_INSTRUCTION_ENUM)

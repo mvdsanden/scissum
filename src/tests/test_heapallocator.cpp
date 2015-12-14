@@ -101,6 +101,22 @@ void test3()
     
 }
 
+void test4()
+{
+    HeapAllocator<std::tuple<size_t, size_t, size_t>> allocator;
+    
+    auto v = allocator.allocate(1);
+    allocator.construct(v, 1, 2, 3);
+    
+    std::cout << "Size of heap tuple: " << v.size() << ".\n";
+    
+    HeapPointer<size_t> other = v;
+    
+    for (size_t i = 0; i < 3; ++i) {
+        std::cout << other[i] << ".\n";
+    }
+}
+
 int main()
 {
     MemoryManager::instance().initialize(25 * 1024 * 1024);
@@ -114,6 +130,8 @@ int main()
     test2();
     
     test3();
+    
+    test4();
     
     return 0;
 }

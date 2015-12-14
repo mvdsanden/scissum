@@ -38,7 +38,8 @@ namespace scissum {
         template< class... Args >
         void construct( pointer p, Args&&... args )
         {
-            new (p.operator->()) value_type (std::forward(args)...);
+//            new (p.operator->()) value_type (std::forward(args)...);
+            new (p.operator->()) value_type (args...);
         }
         
         template< class U >

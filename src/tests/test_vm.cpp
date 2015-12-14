@@ -8,6 +8,8 @@
 
 #include "vm/VM.hpp"
 
+#include "vm/MemoryManager.hpp"
+
 #include <iostream>
 
 using namespace scissum;
@@ -30,11 +32,12 @@ void test0()
     std::cout << "Stack top: " << *vm.stackPointer() << ".\n";
 }
 
-void testProg(std::string const &testName, uint8_t const *program, size_t length, size_t result)
+template <class ... Args>
+void testProg(std::string const &testName, uint8_t const *program, size_t length, size_t result, Args ... args)
 {
     VM &vm = VM::instance();
     vm.reset();
-    if (vm.execute(program, length) != result) {
+    if (vm.execute(program, length, args...) != result) {
         std::cout << "test " << testName << ": FAILED (expected " << result << ").\n";
         exit(1);
     }
@@ -283,7 +286,7 @@ void testBt()
         VM::OP_BNt_1,0x03,
         VM::OP_LdI_0,0x11,0x11,
         VM::OP_Return_0
-    }, 8, 0);
+    }, 11, 0x1111);
 }
 
 void testBNt()
@@ -292,8 +295,74 @@ void testBNt()
     testProg("BNt1", (uint8_t[]){VM::OP_LdI_1,0x00,VM::OP_BNt_1,0x03,VM::OP_LdI_0,0x11,0x11,VM::OP_Return_0}, 8, 0);
 }
 
+void testArgs()
+{
+    testProg<size_t>("Args0", (uint8_t[]){VM::OP_LNAPB_0,0x00,VM::OP_Return_0}, 3, 0x12, 0x12);
+    testProg<size_t, size_t>("Args1", (uint8_t[]){
+        VM::OP_LNSPB_0,0x00,
+        VM::OP_LNAPB_0,0x01,
+        VM::OP_Add_0,
+        VM::OP_Return_0
+    }, 6, 0x12+0x21, 0x12, 0x21);
+}
+
+void testTemp()
+{
+    testProg<size_t, size_t>("Temp0", (uint8_t[]){
+        VM::OP_Link_1,0x03,  // make space for 3 temporaries.
+        VM::OP_LNSPB_0,0x00, // Load argument 0 to stack.
+        VM::OP_LNAPW_0,0x01,0x00, // Load argument 1 to accumulator.
+        VM::OP_SNATW_0,0x01,0x00, // Store accumulator to temporary 1.
+        VM::OP_Add_0,        // acc += *st.
+        VM::OP_SNATB_0,0x00, // Store accumulator to temporary 0.
+        VM::OP_LdI_1,0x00,   // Load 0 to accumulator.
+        VM::OP_LNATB_0,0x00, // Load temporary 0 to accumulator.
+        VM::OP_LNSTB_0,0x01, // Load temporary 1 to stack.
+        VM::OP_Add_0,
+        VM::OP_Return_0
+    }, 21, 0x12+0x21+0x21, 0x12, 0x21);
+}
+
+void testComplexAccIndex()
+{
+    testProg<size_t, size_t>("AccIndex", (uint8_t[]){
+        VM::OP_Link_1,0x03,  // make space for 3 temporaries.
+        VM::OP_LNSPB_0,0x00, // Load argument 0 to stack.
+        VM::OP_LdI_1,0x01,   // Set stack to one to add to the index of the next instruction.
+        VM::OP_LIAPW_0,0x00,0x00, // Load argument 1 to accumulator.
+        VM::OP_SNATW_0,0x01,0x00, // Store accumulator to temporary 1.
+        VM::OP_Add_0,        // acc += *st.
+        VM::OP_SNATB_0,0x00, // Store accumulator to temporary 0.
+        VM::OP_LdI_1,0x00,   // Load 0 to accumulator.
+        VM::OP_LNATB_0,0x00, // Load temporary 0 to accumulator.
+        VM::OP_LNSTB_0,0x01, // Load temporary 1 to stack.
+        VM::OP_Add_0,
+        VM::OP_Return_0
+    }, 23, 0x12+0x21+0x21, 0x12, 0x21);
+}
+
+void testComplexIncDec()
+{
+    testProg<size_t, size_t>("IncDec", (uint8_t[]){
+        VM::OP_Link_1,0x03,  // make space for 3 temporaries.
+        VM::OP_LNSPB_0,0x00, // Load argument 0 to stack.
+        VM::OP_LdI_1,0x01,   // Set stack to one to add to the index of the next instruction.
+        VM::OP_IIAPW_0,0x00,0x00, // Increment argument 1 and load it to accumulator.
+        VM::OP_SNATW_0,0x01,0x00, // Store accumulator to temporary 1.
+        VM::OP_Add_0,        // acc += *st.
+        VM::OP_SNATB_0,0x00, // Store accumulator to temporary 0.
+        VM::OP_LdI_1,0x00,   // Load 0 to accumulator.
+        VM::OP_LNATB_0,0x00, // Load temporary 0 to accumulator.
+        VM::OP_DNSTB_0,0x01, // Decrement temporary 1 and load to stack.
+        VM::OP_Add_0,
+        VM::OP_Return_0
+    }, 23, 0x55, 0x12, 0x21);
+}
+
 int main()
 {
+    MemoryManager::instance().initialize(1024 * 1024 * 1024);
+    
     VM::instance().setOpTraceHook(opTracer);
     
     test0();
@@ -334,6 +403,10 @@ int main()
     testJmp();
     testBt();
     testBNt();
+    testArgs();
+    testTemp();
+    testComplexAccIndex();
+    testComplexIncDec();
     
     return 0;
 }

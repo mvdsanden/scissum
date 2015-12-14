@@ -11,11 +11,14 @@ Sci32PictureCel\
 Sci32ViewCel\
 Sci32View\
 Sci32Script\
+Sci32SelectorVocab\
 Sci32PaletteLoader\
 Sci32PictureLoader\
 Sci32ViewLoader\
 Sci32ScriptLoader\
+Sci32SelectorVocabLoader\
 Sci32ScriptWriter\
+Sci32SelectorVocabWriter\
 ResourceManager
 
 OBJECTS=$(addsuffix .o,$(CLASSES))

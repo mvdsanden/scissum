@@ -47,3 +47,8 @@ The following resource types are known.
 25 CLUT
 26 TARGA
 27 ZZZ
+
+
+*** Heap
+In sci 1.1 - 2.1 heap was separate from the a script. A script has a heap
+resource with the same number in that case.

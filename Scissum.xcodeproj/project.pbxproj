@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		C13FE42A1C18C3C20044A80F /* HeapPointerHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HeapPointerHelper.cpp; path = src/vm/HeapPointerHelper.cpp; sourceTree = "<group>"; };
+		C13FE42B1C18C3C20044A80F /* HeapPointerHelper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = HeapPointerHelper.hpp; path = src/vm/HeapPointerHelper.hpp; sourceTree = "<group>"; };
+		C13FE42C1C1F5BAD0044A80F /* vocab.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vocab.txt; path = docs/vocab.txt; sourceTree = "<group>"; };
+		C13FE42D1C1F60AB0044A80F /* Sci32SelectorVocab.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Sci32SelectorVocab.cpp; path = src/sci/Sci32SelectorVocab.cpp; sourceTree = "<group>"; };
+		C13FE42E1C1F60AB0044A80F /* Sci32SelectorVocab.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Sci32SelectorVocab.hpp; path = src/sci/Sci32SelectorVocab.hpp; sourceTree = "<group>"; };
+		C13FE42F1C1F61E90044A80F /* Sci32SelectorVocabLoader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Sci32SelectorVocabLoader.cpp; path = src/sci/Sci32SelectorVocabLoader.cpp; sourceTree = "<group>"; };
+		C13FE4301C1F61E90044A80F /* Sci32SelectorVocabLoader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Sci32SelectorVocabLoader.hpp; path = src/sci/Sci32SelectorVocabLoader.hpp; sourceTree = "<group>"; };
+		C13FE4311C1F66EB0044A80F /* Sci32SelectorVocabWriter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Sci32SelectorVocabWriter.cpp; path = src/sci/Sci32SelectorVocabWriter.cpp; sourceTree = "<group>"; };
+		C13FE4321C1F66EB0044A80F /* Sci32SelectorVocabWriter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Sci32SelectorVocabWriter.hpp; path = src/sci/Sci32SelectorVocabWriter.hpp; sourceTree = "<group>"; };
 		C15A46EE1BFE24F900A756D2 /* Decompressor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Decompressor.cpp; path = src/tools/Decompressor.cpp; sourceTree = "<group>"; };
 		C15A46EF1BFE24F900A756D2 /* Decompressor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Decompressor.hpp; path = src/tools/Decompressor.hpp; sourceTree = "<group>"; };
 		C15A46F11BFE265400A756D2 /* DecompressorSource.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = DecompressorSource.cpp; path = src/tools/DecompressorSource.cpp; sourceTree = "<group>"; };
@@ -184,6 +193,12 @@
 				C15A47391C0602A400A756D2 /* Sci32ScriptLoader.hpp */,
 				C15A473A1C0604B100A756D2 /* Sci32ScriptWriter.cpp */,
 				C15A473B1C0604B100A756D2 /* Sci32ScriptWriter.hpp */,
+				C13FE42D1C1F60AB0044A80F /* Sci32SelectorVocab.cpp */,
+				C13FE42E1C1F60AB0044A80F /* Sci32SelectorVocab.hpp */,
+				C13FE42F1C1F61E90044A80F /* Sci32SelectorVocabLoader.cpp */,
+				C13FE4301C1F61E90044A80F /* Sci32SelectorVocabLoader.hpp */,
+				C13FE4311C1F66EB0044A80F /* Sci32SelectorVocabWriter.cpp */,
+				C13FE4321C1F66EB0044A80F /* Sci32SelectorVocabWriter.hpp */,
 			);
 			name = sci;
 			sourceTree = "<group>";
@@ -196,6 +211,7 @@
 				C15A47091BFED22A00A756D2 /* references.txt */,
 				C15A47241C02592E00A756D2 /* view.txt */,
 				C15A47311C0521F000A756D2 /* script.txt */,
+				C13FE42C1C1F5BAD0044A80F /* vocab.txt */,
 			);
 			name = docs;
 			sourceTree = "<group>";
@@ -217,6 +233,8 @@
 				C1FF3C871C12351700F19DE4 /* HeapPointer.hh */,
 				C15A47531C10DF3700A756D2 /* HeapAllocator.cpp */,
 				C15A47541C10DF3700A756D2 /* HeapAllocator.hpp */,
+				C13FE42A1C18C3C20044A80F /* HeapPointerHelper.cpp */,
+				C13FE42B1C18C3C20044A80F /* HeapPointerHelper.hpp */,
 			);
 			name = vm;
 			sourceTree = "<group>";

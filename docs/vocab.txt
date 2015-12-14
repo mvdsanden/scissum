@@ -1,0 +1,19 @@
+# Vocabulary Resources
+
+(999) Kernel function names.
+(998) VM Opcode Names.
+(997) Selector Names.
+(996) Class names.
+(995) Debugger strings.
+(994) Offset into classes of properties.
+
+
+* Vocab 997 Structure
+<COUNT><OFFSETS*COUNT>(<SIZE><BYTE*SIZE>)*
+
+0x0000      UInt16      Number of entries.
+
+Followed by an UInt16 offset for every entry to its data.
+
+All entry data consists of a UInt16 size followed by that many bytes of (ascii)
+data.

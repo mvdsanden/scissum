@@ -16,6 +16,9 @@
 #include "sci/Sci32Script.hpp"
 #include "sci/Sci32ScriptLoader.hpp"
 #include "sci/Sci32ScriptWriter.hpp"
+#include "sci/Sci32SelectorVocab.hpp"
+#include "sci/Sci32SelectorVocabLoader.hpp"
+#include "sci/Sci32SelectorVocabWriter.hpp"
 #include "graphics/Palette.hpp"
 #include "io/Reader.hpp"
 #include "graphics/ImageSaver.hpp"
@@ -29,6 +32,21 @@
 const bool g_savePictures = true;
 const bool g_saveViews = true;
 const bool g_saveScripts = true;
+const bool g_saveVocabs = true;
+
+void loadVocab(std::shared_ptr<scissum::Reader> const &reader, size_t length, size_t id)
+{
+    scissum::Sci32SelectorVocabLoader loader;
+    scissum::Sci32SelectorVocabWriter writer;
+    
+    auto vocab = loader.load(reader, length);
+    
+    std::stringstream s; s << "vocab_" << id << ".lst";
+    
+    std::ofstream stream(s.str());
+    
+    writer.write(stream, vocab);
+}
 
 void loadScript(std::shared_ptr<scissum::Reader> const &reader, size_t length, size_t id)
 {
@@ -112,6 +130,8 @@ void extract(size_t type, size_t id)
         loadView(resourceReader, id);
     } else if (type == 2 && g_saveScripts) {
         loadScript(resourceReader, scissum::ResourceManager::instance().getResourceSize(type, id), id);
+    } else if (type == 6 && g_saveVocabs) {
+        loadVocab(resourceReader, scissum::ResourceManager::instance().getResourceSize(type, id), id);
     } else {
         copyToStream(resourceReader, std::cout);
     }

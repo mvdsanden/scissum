@@ -1,21 +1,22 @@
 # Script
 
-<HEADER><EXPORT-TABLE><LOCALS><OBJECTS>
+<HEADER><EXPORT-TABLE><LOCALS><OBJECTS><CODE><STRINGS><RELOCATION-TABLE>
 
 ** Script header
 
-0x0000      UInt32      Script offset
-0x0004      UInt32      Offset to string data
-0x0008      UInt32      Offset to something
+0x0000      UInt32      Offset to code block.
+0x0004      UInt32      Offset to string block.
+0x0008      UInt32      Offset to relocation table.
 0x000c      UInt16      Locals count
 0x000e      UInt16      ??                      15
 0x0010      UInt16      ??                      30
-0x0012      UInt16      ??                      58
+0x0012      UInt16      Relocation table size
 0x0014      UInt16      Exports Count
 
 ** Exports Table
-The exports table follows the script header and is an array of Expoprt Count
-UInt16s.
+The exports table follows the script header and is an array of Export Count
+UInt16s that are relative indices into the scripts code block or need to be
+looked up in the relocation table...
 
 ** Locals Table
 The locals table follows the exports table directly, but is 4 byte aligned, so
@@ -24,10 +25,33 @@ it might start a few bytes later.
 It seems that local variables are UInt16s.
 
 ** Object Table
-The object table follows the locals table.
+The object table follows the locals table. It starts at a 4 byte boundary.
 
 ** Object Header
 0x0000      UInt16      Magic number    0x1234
 0x0002      UInt16      Size
 0x0004      (U)Int16    Species         (super class?) -1 => no super class?
 0x000a      UInt16      Flags
+0x000c
+0x000e
+0x0010                  Group info
+...
+
+*** Selectors
+
+
+Selectors are stored in groups of 64 bytes of which the first UInt32 is a type
+mask for the following 30 UInt16 selectors starting at the LSB (the first 2 bits
+are skipped).
+If the bit is set it is a property, otherwise if the selector value is not
+0xffff it is a method.
+
+** Relocation table
+This is a table of relocation entries. An entry had a script offset
+
+Entries of 10 bytes each.
+
+*** Relocation table entry
+0x0000      UInt32      The offset to relocate.
+0x0004      UInt32      The offset to add to the UInt16 at the specified offset to get the relocated offset.
+0x0006      UInt16      ??

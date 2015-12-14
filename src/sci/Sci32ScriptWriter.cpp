@@ -33,7 +33,7 @@ void Sci32ScriptWriter::writeAssembly(std::ostream &stream, std::shared_ptr<Sci3
         
         switch (op) {
           
-#define SCISSUM_ASM_WRITER_CASES(OpCode, TotalBytes, InternalName, Alias, ArgCount, Arg0, Arg1, Arg2, Desc)\
+#define SCISSUM_ASM_WRITER_CASES(OpCode, TotalBytes, InternalName, Alias, ArgCount, Arg0, Arg1, Arg2, Desc, ...)\
         case OpCode:\
                 stream << #InternalName << "\t";\
                 if (ArgCount > 0) {\
